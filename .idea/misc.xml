@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/drawable/ic_hamburger_menu_bottom_bar.xml" value="0.5703125" />
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/drawable/ic_no_photo_vector.xml" value="0.5703125" />
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/drawable/ic_plus.xml" value="0.5703125" />
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/drawable/ic_plus_fab.xml" value="0.5703125" />
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/drawable/ic_wikipedia.xml" value="0.5703125" />
         <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
+        <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.490036231884058" />
         <entry key="..\:/JAVA/Android project/MarsLandscapes/app/src/main/res/layout/picture_of_the_day_fragment.xml" value="0.490036231884058" />
       </map>
     </option>
