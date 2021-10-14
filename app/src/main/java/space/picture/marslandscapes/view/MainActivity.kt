@@ -1,7 +1,8 @@
-package space.picture.marslandscapes
+package space.picture.marslandscapes.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import space.picture.marslandscapes.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package space.picture.marslandscapes
+package space.picture.marslandscapes.viewmodel
 
 import androidx.lifecycle.ViewModel
 
