@@ -6,4 +6,10 @@
     <string name="chip_yesterday">Вчера</string>
     <string name="chip_today">Сегодня</string>
     <string name="chip_before_yesterday">Позавчера</string>
+    <string name="settings">Настройки</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings__text_view_theme">Тема:</string>
+    <string name="settings_chip_name_standart">Стандратная</string>
+    <string name="settings_chip_name_miracle">Чудо</string>
 </resources>
