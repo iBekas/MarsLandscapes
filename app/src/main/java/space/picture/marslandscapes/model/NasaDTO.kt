@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class NasaDTO(
-    val copyright: String,
+    val copyright: String? = null,
     val date: String,
     val explanation: String,
     val hdurl: String,
