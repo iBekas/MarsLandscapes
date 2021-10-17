@@ -54,9 +54,15 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         searchWikipedia()
-        binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+        setMenuOnBottomBar()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureTodayFromRemoteSource(BuildConfig.NASA_API_KEY)
+    }
+
+    private fun setMenuOnBottomBar() {
+        val context = activity as MainActivity
+        context.setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
