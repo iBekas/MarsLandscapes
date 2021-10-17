@@ -5,10 +5,10 @@ import space.picture.marslandscapes.model.NasaDTO
 import space.picture.marslandscapes.model.RemoteDataSource
 
 class PictureOfTheDayRepositoryImpl(private val remoteDataSource: RemoteDataSource) : PictureOfTheDayRepository {
-    override fun getMovieFromServerNow(apiKey: String, callback: Callback<NasaDTO>) =
+    override fun getPictureOfTheToday(apiKey: String, callback: Callback<NasaDTO>) =
         remoteDataSource.getPictureOfTheToday(apiKey, callback)
 
-    override fun getMovieFromServerUpcoming(
+    override fun getPictureOfTheYesterday(
         date: String,
         apiKey: String,
         callback: Callback<NasaDTO>
