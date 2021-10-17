@@ -26,21 +26,21 @@
 
                 <com.google.android.material.chip.Chip
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="@dimen/chip_width"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="@string/chip_today"/>
 
                 <com.google.android.material.chip.Chip
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="@dimen/chip_width"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="@string/chip_yesterday" />
 
                 <com.google.android.material.chip.Chip
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="@dimen/chip_width"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="@string/chip_before_yesterday" />
