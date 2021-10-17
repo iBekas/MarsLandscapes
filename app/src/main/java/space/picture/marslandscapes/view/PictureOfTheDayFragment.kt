@@ -7,12 +7,9 @@ import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
@@ -48,7 +45,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = PictureOfTheDayFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -58,8 +55,7 @@ class PictureOfTheDayFragment : Fragment() {
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         searchWikipedia()
         binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-        viewModel.getLiveData().observe(viewLifecycleOwner,
-            Observer<AppState> { renderData(it) })
+        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureTodayFromRemoteSource(BuildConfig.NASA_API_KEY)
     }
 
@@ -70,7 +66,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_settings -> activity?.supportFragmentManager?.apply { beginTransaction()?.add(R.id.container, SettingsFragment.newInstance())?.addToBackStack(null)?.commit() }
+            R.id.app_bar_settings -> activity?.supportFragmentManager?.apply { beginTransaction().add(R.id.container, SettingsFragment.newInstance()).addToBackStack(null).commit() }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -117,7 +113,7 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetCallback() {
             override fun onStateChanged(view: View, i: Int) {
                 if (i == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                 }
             }
 
