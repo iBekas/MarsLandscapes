@@ -125,18 +125,24 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetCallback() {
             override fun onStateChanged(view: View, i: Int) {
+                bottomSheet.visibility = View.VISIBLE
                 if (i == BottomSheetBehavior.STATE_COLLAPSED) {
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                 }
             }
 
             override fun onSlide(view: View, v: Float) {
-                // do something when slide happens
+               bottomSheet.visibility = View.VISIBLE
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
             }
         })
+
+        binding.imageView.setOnClickListener{
+            bottomSheet.visibility = View.VISIBLE
+        }
     }
 
     private fun Fragment.toast(string: String?) {
