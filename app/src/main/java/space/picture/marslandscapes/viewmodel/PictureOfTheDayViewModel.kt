@@ -33,7 +33,7 @@ class PictureOfTheDayViewModel(
         override fun onResponse(call: Call<NasaDTO>, response: Response<NasaDTO>) {
             val serverResponse: NasaDTO? = response.body()
             if (response.isSuccessful && serverResponse != null) {
-                liveDataForViewToObserve.value = AppState.SuccessToday(serverResponse)
+                liveDataForViewToObserve.value = AppState.Success(serverResponse)
             } else {
                 liveDataForViewToObserve.postValue(AppState.Error(NullPointerException()))
             }
@@ -47,7 +47,7 @@ class PictureOfTheDayViewModel(
         override fun onResponse(call: Call<NasaDTO>, response: Response<NasaDTO>) {
             val serverResponse: NasaDTO? = response.body()
             if (response.isSuccessful && serverResponse != null) {
-                liveDataForViewToObserve.value = AppState.SuccessYesterday(serverResponse)
+                liveDataForViewToObserve.value = AppState.Success(serverResponse)
             } else {
                 liveDataForViewToObserve.postValue(AppState.Error(NullPointerException()))
             }

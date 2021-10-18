@@ -3,6 +3,7 @@ package space.picture.marslandscapes.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
@@ -18,6 +19,8 @@ import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -57,6 +60,7 @@ class PictureOfTheDayFragment : Fragment() {
         setMenuOnBottomBar()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureTodayFromRemoteSource(BuildConfig.NASA_API_KEY)
+        onClickPictureChips()
     }
 
     private fun setMenuOnBottomBar() {
@@ -72,7 +76,12 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_settings -> activity?.supportFragmentManager?.apply { beginTransaction().add(R.id.container, SettingsFragment.newInstance()).addToBackStack(null).commit() }
+            R.id.app_bar_settings -> activity?.supportFragmentManager?.apply {
+                beginTransaction().add(
+                    R.id.container,
+                    SettingsFragment.newInstance()
+                ).addToBackStack(null).commit()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -80,7 +89,7 @@ class PictureOfTheDayFragment : Fragment() {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> toast("Ошибка загрузки")
-            is AppState.SuccessToday -> {
+            is AppState.Success -> {
                 binding.pictureLoading.visibility = View.GONE
                 val serverResponseData = appState.dataNasa
                 val url = serverResponseData.url
@@ -94,11 +103,12 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
-                    view?.findViewById<TextView>(R.id.bottom_sheet_description_header)?.text = appState.dataNasa.title
-                    view?.findViewById<TextView>(R.id.bottom_sheet_description)?.text = appState.dataNasa.explanation
+                    view?.findViewById<TextView>(R.id.bottom_sheet_description_header)?.text =
+                        appState.dataNasa.title
+                    view?.findViewById<TextView>(R.id.bottom_sheet_description)?.text =
+                        appState.dataNasa.explanation
                 }
             }
-            is AppState.SuccessYesterday -> binding.pictureLoading.visibility = View.GONE
             is AppState.Loading -> binding.pictureLoading.visibility = View.VISIBLE
         }
     }
@@ -134,6 +144,37 @@ class PictureOfTheDayFragment : Fragment() {
             setGravity(Gravity.BOTTOM, 0, 250)
             show()
         }
+    }
+
+    private fun onClickPictureChips() {
+        binding.chipToday.setOnClickListener {
+            binding.chipToday.isChecked = false
+            viewModel.getPictureTodayFromRemoteSource(
+                BuildConfig.NASA_API_KEY
+            )
+            binding.chipToday.isChecked = true
+        }
+        binding.chipYesterday.setOnClickListener {
+            binding.chipToday.isChecked = false
+            viewModel.getPictureYesterdayFromRemoteSource(
+                getDaysAgo(1),
+                BuildConfig.NASA_API_KEY
+            )
+        }
+        binding.chipBeforeYesterday.setOnClickListener {
+            binding.chipToday.isChecked = false
+            viewModel.getPictureYesterdayFromRemoteSource(
+                getDaysAgo(2),
+                BuildConfig.NASA_API_KEY
+            )
+        }
+    }
+
+    private fun getDaysAgo(daysAgo: Int): String {
+        val calendar = Calendar.getInstance()
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
+        return simpleDateFormat.format(calendar.time)
     }
 
 }
