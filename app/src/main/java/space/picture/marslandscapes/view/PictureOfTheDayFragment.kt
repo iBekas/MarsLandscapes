@@ -139,10 +139,6 @@ class PictureOfTheDayFragment : Fragment() {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
             }
         })
-
-        binding.imageView.setOnClickListener{
-            bottomSheet.visibility = View.VISIBLE
-        }
     }
 
     private fun Fragment.toast(string: String?) {
