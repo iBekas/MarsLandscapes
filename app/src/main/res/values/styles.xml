@@ -16,5 +16,23 @@
         <item name="endIconMode">custom</item>
     </style>
 
+    <style name="LineBottomSheet" parent="">
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:background">@color/grey</item>
+    </style>
+
+    <style name="HeadText" parent="">
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:paddingStart">@dimen/padding_medium</item>
+        <item name="android:paddingEnd">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BodyTextBottomSheet" parent="">
+        <item name="android:paddingStart">@dimen/padding_medium</item>
+        <item name="android:paddingEnd">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
 
 </resources>

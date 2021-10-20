@@ -12,4 +12,6 @@
     <string name="settings__text_view_theme">Тема:</string>
     <string name="settings_chip_name_standart">Стандратная</string>
     <string name="settings_chip_name_miracle">Чудо</string>
+    <string name="bootom_sheet_head_text">Head</string>
+    <string name="bootom_sheet_body_text">Body</string>
 </resources>
