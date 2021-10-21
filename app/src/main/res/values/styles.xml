@@ -1,11 +1,14 @@
 <resources>
 
-  <style name="WikiStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="WikiStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">20</item>
         <item name="endIconCheckable">true</item>
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
         <item name="endIconMode">custom</item>
+        <item name="android:textColorHint">?textInputLayoutColorHint</item>
+        <item name="counterTextColor">?textInputLayoutColorHint</item>
+        <item name="helperTextTextColor">?textInputLayoutColorHint</item>
     </style>
 
     <style name="LineBottomSheet" parent="">
@@ -25,6 +28,17 @@
         <item name="android:paddingStart">@dimen/padding_medium</item>
         <item name="android:paddingEnd">@dimen/padding_medium</item>
         <item name="android:textColor">@color/dark_grey</item>
+    </style>
+
+    <style name="ChipsDayNightTextColor" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">?textChipsColor</item>
+    </style>
+
+
+    <style name="SettingsTextHead" parent="">
+        <item name="android:textSize">@dimen/settings_text_view_size</item>
+        <item name="android:textColor">?textHeadColorSettings</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

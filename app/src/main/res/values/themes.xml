@@ -19,6 +19,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="textInputLayoutColorHint">@color/grey</item>
+        <item name="textChipsColor">@color/black</item>
+        <item name="textHeadColorSettings">@color/black</item>
     </style>
 
 </resources>
