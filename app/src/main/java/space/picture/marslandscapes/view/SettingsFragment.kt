@@ -3,13 +3,13 @@ package space.picture.marslandscapes.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.SettingsFragmentBinding
+import space.picture.marslandscapes.util.App
 
 class SettingsFragment : Fragment() {
 
@@ -27,7 +27,7 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = SettingsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,11 +38,11 @@ class SettingsFragment : Fragment() {
     }
 
     private fun onClickThemeChips() {
+        App.fragmentId = 1
         with(binding){
             chipStandardTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
                 setAppTheme(R.style.AppTheme)
-//                (activity as? MainActivity)?.changeTheme(R.style.AppTheme)
                 activity?.recreate()
                 chipStandardTheme.isChecked = true
             }
@@ -51,7 +51,6 @@ class SettingsFragment : Fragment() {
                 chipStandardTheme.isChecked = false
                 setAppTheme(R.style.Blueberry)
                 activity?.recreate()
-//                (activity as? MainActivity)?.changeTheme(R.style.Blueberry)
             }
         }
 
@@ -66,15 +65,6 @@ class SettingsFragment : Fragment() {
         editor.putInt(THEME, codeStyle)
         editor.apply()
     }
-
-    fun getAppTheme(): Int {
-        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
-            THEME_SHARED_PREFERENCE,
-            Context.MODE_PRIVATE
-        )
-        return sharedPref.getInt(THEME, R.style.AppTheme)
-    }
-
 
     companion object {
         fun newInstance() = SettingsFragment()

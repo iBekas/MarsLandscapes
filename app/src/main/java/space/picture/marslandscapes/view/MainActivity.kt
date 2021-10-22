@@ -1,12 +1,11 @@
 package space.picture.marslandscapes.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.ActivityMainBinding
+import space.picture.marslandscapes.util.App
 import space.picture.marslandscapes.util.getAppTheme
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentChoice() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -15,9 +14,6 @@ class MainActivity : AppCompatActivity() {
         setTheme(getAppTheme(this))
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        savedInstanceState.let {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
-        }
+        getFragmentByFragmentId(App.fragmentId)
     }
 }

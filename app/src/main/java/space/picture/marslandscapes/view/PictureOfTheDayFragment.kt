@@ -3,10 +3,8 @@ package space.picture.marslandscapes.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -78,7 +76,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_settings -> activity?.supportFragmentManager?.apply {
-                beginTransaction().add(
+                beginTransaction().replace(
                     R.id.container,
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()
