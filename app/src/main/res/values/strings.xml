@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MarsLandscapes</string>
+    <string name="app_name">Космические пейзажи</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
     <string name="photo_of_the_day_stub">Фото дня</string>
@@ -8,10 +8,10 @@
     <string name="chip_before_yesterday">Позавчера</string>
     <string name="settings">Настройки</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Пустой фрагмент</string>
     <string name="settings__text_view_theme">Тема:</string>
     <string name="settings_chip_name_standart">Стандратная</string>
-    <string name="settings_chip_name_miracle">Чудо</string>
-    <string name="bootom_sheet_head_text">Head</string>
-    <string name="bootom_sheet_body_text">Body</string>
+    <string name="settings_chip_name_miracle">Синяя</string>
+    <string name="bootom_sheet_head_text">Заголовок</string>
+    <string name="bootom_sheet_body_text">Основной текст</string>
 </resources>

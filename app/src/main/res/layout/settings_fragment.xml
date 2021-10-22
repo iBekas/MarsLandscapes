@@ -27,14 +27,17 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chipStandardTheme"
             style="@style/ChipsDayNightTextColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/settings_chip_name_standart"
             android:textAlignment="center" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipsDayNightTextColor"
+            android:id="@+id/chipBlueberryTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_chip_name_miracle"
