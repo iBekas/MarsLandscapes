@@ -36,8 +36,8 @@
             android:textAlignment="center" />
 
         <com.google.android.material.chip.Chip
-            style="@style/ChipsDayNightTextColor"
             android:id="@+id/chipBlueberryTheme"
+            style="@style/ChipsDayNightTextColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_chip_name_miracle"

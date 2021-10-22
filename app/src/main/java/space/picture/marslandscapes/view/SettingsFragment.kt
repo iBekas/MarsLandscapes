@@ -1,6 +1,9 @@
 package space.picture.marslandscapes.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,19 +41,45 @@ class SettingsFragment : Fragment() {
         with(binding){
             chipStandardTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
-                (requireActivity() as? MainActivity)?.changeTheme(R.style.AppTheme)
+                setAppTheme(R.style.AppTheme)
+//                (activity as? MainActivity)?.changeTheme(R.style.AppTheme)
+                activity?.recreate()
                 chipStandardTheme.isChecked = true
             }
 
             chipBlueberryTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
-                (requireActivity() as? MainActivity)?.changeTheme(R.style.Blueberry)
+                setAppTheme(R.style.Blueberry)
+                activity?.recreate()
+//                (activity as? MainActivity)?.changeTheme(R.style.Blueberry)
             }
         }
 
     }
 
+    private fun setAppTheme(codeStyle: Int) {
+        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
+            THEME_SHARED_PREFERENCE,
+            Context.MODE_PRIVATE
+        )
+        val editor = sharedPref.edit()
+        editor.putInt(THEME, codeStyle)
+        editor.apply()
+    }
+
+    fun getAppTheme(): Int {
+        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
+            THEME_SHARED_PREFERENCE,
+            Context.MODE_PRIVATE
+        )
+        return sharedPref.getInt(THEME, R.style.AppTheme)
+    }
+
+
     companion object {
         fun newInstance() = SettingsFragment()
+        const val THEME_SHARED_PREFERENCE = "KEY"
+        const val THEME = "THEME"
+
     }
 }

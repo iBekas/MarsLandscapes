@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
+import space.picture.marslandscapes.util.toast
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
 import java.text.SimpleDateFormat
@@ -139,13 +140,6 @@ class PictureOfTheDayFragment : Fragment() {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
             }
         })
-    }
-
-    private fun Fragment.toast(string: String?) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM, 0, 250)
-            show()
-        }
     }
 
     private fun onClickPictureChips() {
