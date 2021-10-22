@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/dark_yellow</item>
         <item name="colorPrimaryDark">@color/dark_yellow</item>
         <item name="colorAccent">@color/yellow</item>
@@ -9,4 +8,15 @@
         <item name="textChipsColor">@color/dark_yellow</item>
         <item name="textHeadColorSettings">@color/dark_yellow</item>
     </style>
+
+
+    <style name="Blueberry" parent="AppTheme">
+        <item name="colorPrimary">@color/dark_yellow</item>
+        <item name="colorPrimaryDark">@color/dark_yellow</item>
+        <item name="colorAccent">@color/yellow</item>
+        <item name="textInputLayoutColorHint">@color/dark_yellow</item>
+        <item name="textChipsColor">@color/dark_yellow</item>
+        <item name="textHeadColorSettings">@color/dark_yellow</item>
+    </style>
+
 </resources>

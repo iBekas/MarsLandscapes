@@ -16,5 +16,7 @@
     <color name="light_grey">#ddd</color>
     <color name="grey">#663b4351</color>
     <color name="dark_grey">#aaa</color>
+    <color name="light_blue">#b0c4de</color>
+
 
 </resources>
