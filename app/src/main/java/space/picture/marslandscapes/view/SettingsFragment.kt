@@ -24,11 +24,19 @@ class SettingsFragment : Fragment() {
         _binding = null
     }
 
+    override fun onStop() {
+        super.onStop()
+        setChipChecked(binding.chipStandardTheme.isChecked, binding.chipBlueberryTheme.isChecked)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = SettingsFragmentBinding.inflate(inflater, container, false)
+        binding.chipStandardTheme.isChecked = getChipCheckedStandard()
+        binding.chipBlueberryTheme.isChecked = getChipCheckedBlueberry()
+
         return binding.root
     }
 
@@ -39,7 +47,7 @@ class SettingsFragment : Fragment() {
 
     private fun onClickThemeChips() {
         App.fragmentId = 1
-        with(binding){
+        with(binding) {
             chipStandardTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
                 setAppTheme(R.style.AppTheme)
@@ -53,7 +61,6 @@ class SettingsFragment : Fragment() {
                 activity?.recreate()
             }
         }
-
     }
 
     private fun setAppTheme(codeStyle: Int) {
@@ -66,10 +73,39 @@ class SettingsFragment : Fragment() {
         editor.apply()
     }
 
+    private fun setChipChecked(standard: Boolean, blueberry: Boolean) {
+        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
+            CHECK_CHIPS_STATE,
+            Context.MODE_PRIVATE
+        )
+        val editor = sharedPref.edit()
+        editor.putBoolean(STANDARD, standard)
+        editor.putBoolean(BLUEBERRY, blueberry)
+        editor.apply()
+    }
+
+    private fun getChipCheckedStandard(): Boolean {
+        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
+            CHECK_CHIPS_STATE,
+            Context.MODE_PRIVATE
+        )
+        return sharedPref.getBoolean(STANDARD, true)
+    }
+
+    private fun getChipCheckedBlueberry(): Boolean {
+        val sharedPref: SharedPreferences = requireActivity().getSharedPreferences(
+            CHECK_CHIPS_STATE,
+            Context.MODE_PRIVATE
+        )
+        return sharedPref.getBoolean(BLUEBERRY, false)
+    }
+
     companion object {
         fun newInstance() = SettingsFragment()
         const val THEME_SHARED_PREFERENCE = "KEY"
         const val THEME = "THEME"
-
+        const val CHECK_CHIPS_STATE = "CHECKED"
+        const val BLUEBERRY = "BLUEBERRY"
+        const val STANDARD = "STANDARD"
     }
 }

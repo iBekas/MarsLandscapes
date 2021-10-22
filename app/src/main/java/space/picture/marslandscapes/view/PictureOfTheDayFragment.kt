@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
+import space.picture.marslandscapes.model.WIKI_URL
 import space.picture.marslandscapes.util.toast
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
@@ -63,8 +64,7 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun setMenuOnBottomBar() {
-        val context = activity as MainActivity
-        context.setSupportActionBar(binding.bottomAppBar)
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
     }
 
@@ -117,7 +117,7 @@ class PictureOfTheDayFragment : Fragment() {
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                    Uri.parse("$WIKI_URL${binding.inputEditText.text.toString()}")
             })
         }
     }

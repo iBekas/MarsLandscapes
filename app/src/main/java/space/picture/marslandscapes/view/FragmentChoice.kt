@@ -2,7 +2,6 @@ package space.picture.marslandscapes.view
 
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import space.picture.marslandscapes.R
 
 
