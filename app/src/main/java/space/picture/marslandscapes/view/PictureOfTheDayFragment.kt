@@ -14,7 +14,9 @@ import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
 import space.picture.marslandscapes.model.WIKI_URL
+import space.picture.marslandscapes.util.getDaysAgo
 import space.picture.marslandscapes.util.toast
+import space.picture.marslandscapes.view.marsweather.MarsWeatherActivity
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
 import java.text.SimpleDateFormat
@@ -79,6 +81,7 @@ class PictureOfTheDayFragment : Fragment() {
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()
             }
+            R.id.app_bar_telescope -> startActivity(Intent(context,MarsWeatherActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
@@ -147,13 +150,6 @@ class PictureOfTheDayFragment : Fragment() {
                 BuildConfig.NASA_API_KEY
             )
         }
-    }
-
-    private fun getDaysAgo(daysAgo: Int): String {
-        val calendar = Calendar.getInstance()
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
-        calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
-        return simpleDateFormat.format(calendar.time)
     }
 
 }

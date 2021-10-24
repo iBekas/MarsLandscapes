@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.view.SettingsFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun getAppTheme(activity: Activity): Int {
     val sharedPref: SharedPreferences = activity.getSharedPreferences(
@@ -22,5 +24,12 @@ fun Fragment.toast(string: String?) {
         setGravity(Gravity.BOTTOM, 0, 250)
         show()
     }
+}
+
+fun getDaysAgo(daysAgo: Int): String {
+    val calendar = Calendar.getInstance()
+    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    calendar.add(Calendar.DAY_OF_YEAR, -daysAgo)
+    return simpleDateFormat.format(calendar.time)
 }
 
