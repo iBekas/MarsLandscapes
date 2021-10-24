@@ -7,6 +7,7 @@
     <string name="chip_today">Сегодня</string>
     <string name="chip_before_yesterday">Позавчера</string>
     <string name="settings">Настройки</string>
+    <string name="telescope">Телескоп</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Пустой фрагмент</string>
     <string name="settings__text_view_theme">Тема:</string>

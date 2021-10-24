@@ -8,6 +8,7 @@
     <string name="chip_today">Today</string>
     <string name="chip_before_yesterday">Before yesterday</string>
     <string name="settings">Settings</string>
+    <string name="telescope">Telescope</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settings__text_view_theme">Theme:</string>
