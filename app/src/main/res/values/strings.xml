@@ -15,4 +15,7 @@
     <string name="settings_chip_name_miracle">Синяя</string>
     <string name="bootom_sheet_head_text">Заголовок</string>
     <string name="bootom_sheet_body_text">Основной текст</string>
+    <string name="front_cam">Передняя камера</string>
+    <string name="real_cam">Задняя камера</string>
+    <string name="panoramic_cam">Панорамная камера</string>
 </resources>

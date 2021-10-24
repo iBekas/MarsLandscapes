@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.marsweather.MarsWeatherActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

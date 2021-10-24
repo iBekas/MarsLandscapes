@@ -16,4 +16,7 @@
     <string name="settings_chip_name_miracle">Blueberry</string>
     <string name="bootom_sheet_head_text">Head</string>
     <string name="bootom_sheet_body_text">Body</string>
+    <string name="front_cam">Front Cam</string>
+    <string name="real_cam">Real Cam</string>
+    <string name="panoramic_cam">Panoramic Cam</string>
 </resources>

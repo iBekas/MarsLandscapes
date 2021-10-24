@@ -6,10 +6,15 @@
     <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_medium">10dp</dimen>
     <dimen name="margin_big">15dp</dimen>
+    <dimen name="margin_extra_large">100dp</dimen>
     <dimen name="padding_small">5dp</dimen>
     <dimen name="padding_medium">10dp</dimen>
     <dimen name="padding_big">15dp</dimen>
     <dimen name="bottom_sheet_line_width">25dp</dimen>
     <dimen name="bottom_sheet_line_height">1dp</dimen>
     <dimen name="picture_fragment_text_input_width">0dp</dimen>
+    <dimen name="text_small">5sp</dimen>
+    <dimen name="text_medium">10sp</dimen>
+    <dimen name="text_big_x">15sp</dimen>
+    <dimen name="text_big_xx">20sp</dimen>
 </resources>
