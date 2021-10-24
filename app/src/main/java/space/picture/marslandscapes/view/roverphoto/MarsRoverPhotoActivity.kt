@@ -1,20 +1,21 @@
-package space.picture.marslandscapes.view.marsweather
+package space.picture.marslandscapes.view.roverphoto
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import space.picture.marslandscapes.R
-import space.picture.marslandscapes.databinding.MarsWeatherActivityBinding
+import space.picture.marslandscapes.databinding.MarsRoverPhotoActivityBinding
+
 import space.picture.marslandscapes.util.getAppTheme
 
-class MarsWeatherActivity : AppCompatActivity() {
+class MarsRoverPhotoActivity : AppCompatActivity() {
 
-    lateinit var binding: MarsWeatherActivityBinding
+    lateinit var binding: MarsRoverPhotoActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(getAppTheme(this))
-        binding = MarsWeatherActivityBinding.inflate(layoutInflater)
+        binding = MarsRoverPhotoActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

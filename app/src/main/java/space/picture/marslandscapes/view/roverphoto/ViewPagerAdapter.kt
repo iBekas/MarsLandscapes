@@ -1,4 +1,4 @@
-package space.picture.marslandscapes.view.marsweather
+package space.picture.marslandscapes.view.roverphoto
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

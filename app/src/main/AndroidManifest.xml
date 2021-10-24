@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.marsweather.MarsWeatherActivity"
+            android:name=".view.roverphoto.MarsRoverPhotoActivity"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"

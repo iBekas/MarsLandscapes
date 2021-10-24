@@ -1,4 +1,4 @@
-package space.picture.marslandscapes.view.marsweather
+package space.picture.marslandscapes.view.roverphoto
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import space.picture.marslandscapes.R
 
-class PanoramicMarsCamFragment : Fragment() {
+class RealMarsCamFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.panoramic_mars_cam_fragment, container, false)
+        return inflater.inflate(R.layout.real_mars_cam_fragment, container, false)
     }
-
 }

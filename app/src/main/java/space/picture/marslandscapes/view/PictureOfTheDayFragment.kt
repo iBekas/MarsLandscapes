@@ -16,10 +16,9 @@ import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
 import space.picture.marslandscapes.model.WIKI_URL
 import space.picture.marslandscapes.util.getDaysAgo
 import space.picture.marslandscapes.util.toast
-import space.picture.marslandscapes.view.marsweather.MarsWeatherActivity
+import space.picture.marslandscapes.view.roverphoto.MarsRoverPhotoActivity
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
@@ -81,7 +80,7 @@ class PictureOfTheDayFragment : Fragment() {
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()
             }
-            R.id.app_bar_rover -> startActivity(Intent(context,MarsWeatherActivity::class.java))
+            R.id.app_bar_rover -> startActivity(Intent(context,MarsRoverPhotoActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
