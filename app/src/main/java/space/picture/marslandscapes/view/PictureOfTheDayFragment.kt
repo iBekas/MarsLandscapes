@@ -4,13 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
@@ -55,7 +53,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+        setBottomSheetBehavior()
         searchWikipedia()
         setMenuOnBottomBar()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
@@ -102,9 +100,9 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
-                    view?.findViewById<TextView>(R.id.bottom_sheet_description_header)?.text =
+                    binding.includeLayout.bottomSheetDescriptionHeader.text =
                         appState.dataNasa.title
-                    view?.findViewById<TextView>(R.id.bottom_sheet_description)?.text =
+                    binding.includeLayout.bottomSheetDescription.text =
                         appState.dataNasa.explanation
                 }
             }
@@ -122,22 +120,9 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
-    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+    private fun setBottomSheetBehavior() {
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(view: View, i: Int) {
-                bottomSheet.visibility = View.VISIBLE
-                if (i == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                }
-            }
-
-            override fun onSlide(view: View, v: Float) {
-               bottomSheet.visibility = View.VISIBLE
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_DRAGGING
-            }
-        })
     }
 
     private fun onClickPictureChips() {
