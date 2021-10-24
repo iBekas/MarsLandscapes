@@ -81,7 +81,7 @@ class PictureOfTheDayFragment : Fragment() {
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()
             }
-            R.id.app_bar_telescope -> startActivity(Intent(context,MarsWeatherActivity::class.java))
+            R.id.app_bar_rover -> startActivity(Intent(context,MarsWeatherActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

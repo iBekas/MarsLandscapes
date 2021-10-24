@@ -2,8 +2,6 @@ package space.picture.marslandscapes.view.marsweather
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 private const val FRONT =0
@@ -12,7 +10,7 @@ private const val PANORAMIC =2
 
 class ViewPagerAdapter(private val fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = arrayOf(PanoramicMarsCamFragment())
+    private val fragments = arrayOf(FrontMarsCamFragment(), RealMarsCamFragment(), PanoramicMarsCamFragment())
 
     override fun getItemCount(): Int {
         return fragments.size

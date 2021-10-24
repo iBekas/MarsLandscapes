@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/app_bar_telescope"
-        android:icon="@drawable/ic_telescope"
-        android:title="@string/telescope"
+        android:id="@+id/app_bar_rover"
+        android:icon="@drawable/ic_rover"
+        android:title="@string/rover"
         app:showAsAction="ifRoom" />
 
     <item

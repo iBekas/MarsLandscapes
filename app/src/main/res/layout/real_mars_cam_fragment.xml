@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/panoramic_rover_cam"
+        android:id="@+id/real_rover_cam"
         app:srcCompat="@drawable/bg_system"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -27,13 +27,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            android:src="@drawable/swipe_indicator_passive" />
+            android:src="@drawable/swipe_indicator_active" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            android:src="@drawable/swipe_indicator_active" />
+            android:src="@drawable/swipe_indicator_passive" />
     </LinearLayout>
 
 </FrameLayout>
