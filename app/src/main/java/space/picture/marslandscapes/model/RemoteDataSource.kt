@@ -21,7 +21,7 @@ class RemoteDataSource {
         moviesAPI.getPictureOfTheYesterday(date, apiKey).enqueue(callback)
     }
 
-    fun getPictureOfMarsRover(sol: Int, camera: String, apiKey: String, callback: Callback<PhotosByNasaRoverDTO>) {
+    fun getPictureOfMarsRover(sol: Int, camera: String, apiKey: String, callback: Callback<AllPhotosByNasaRoverDTO>) {
         moviesAPI.getPictureOfMarsRover(sol, camera, apiKey).enqueue(callback)
     }
 }

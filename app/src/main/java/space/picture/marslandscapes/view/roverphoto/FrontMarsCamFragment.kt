@@ -53,7 +53,7 @@ class FrontMarsCamFragment : Fragment() {
             is AppState.Error -> toast("Ошибка загрузки")
             is AppState.SuccessRoverPhoto -> {
                 binding.pictureLoading.visibility = View.GONE
-                val serverResponseData = appState.dataNasa
+                val serverResponseData = appState.dataNasa[0]
                 val url = serverResponseData.img_src
                 Log.d("myLog", url + "")
                 if (url.isNullOrEmpty()) {

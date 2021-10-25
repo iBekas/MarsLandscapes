@@ -1,7 +1,7 @@
 package space.picture.marslandscapes.repository
 
 import retrofit2.Callback
-import space.picture.marslandscapes.model.PhotosByNasaRoverDTO
+import space.picture.marslandscapes.model.AllPhotosByNasaRoverDTO
 import space.picture.marslandscapes.model.RemoteDataSource
 
 class MarsRoverPhotoRepositoryImpl(private val remoteDataSource: RemoteDataSource): MarsRoverPhotoRepository {
@@ -9,7 +9,7 @@ class MarsRoverPhotoRepositoryImpl(private val remoteDataSource: RemoteDataSourc
         sol: Int,
         camera: String,
         apiKey: String,
-        callback: Callback<PhotosByNasaRoverDTO>
+        callback: Callback<AllPhotosByNasaRoverDTO>
     ) {
         remoteDataSource.getPictureOfMarsRover(sol, camera, apiKey, callback)
     }

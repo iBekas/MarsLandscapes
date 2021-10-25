@@ -21,6 +21,6 @@ interface NasaPhotoAPI {
         @Query("sol") sol: Int,
         @Query("camera") camera: String,
         @Query("api_key") apiKey: String
-    ): Call<PhotosByNasaRoverDTO>
+    ): Call<AllPhotosByNasaRoverDTO>
 
 }

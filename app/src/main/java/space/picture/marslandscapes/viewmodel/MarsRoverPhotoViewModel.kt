@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import space.picture.marslandscapes.model.PhotosByNasaRoverDTO
+import space.picture.marslandscapes.model.AllPhotosByNasaRoverDTO
 import space.picture.marslandscapes.model.RemoteDataSource
 import space.picture.marslandscapes.repository.MarsRoverPhotoRepository
 import space.picture.marslandscapes.repository.MarsRoverPhotoRepositoryImpl
@@ -24,16 +24,16 @@ class MarsRoverPhotoViewModel(
         repository.getPictureOfMarsRover(sol, camera, apiKey, callBackRoverPhoto)
     }
 
-    private val callBackRoverPhoto = object : Callback<PhotosByNasaRoverDTO> {
-        override fun onResponse(call: Call<PhotosByNasaRoverDTO>, response: Response<PhotosByNasaRoverDTO>) {
-            val serverResponse: PhotosByNasaRoverDTO? = response.body()
+    private val callBackRoverPhoto = object : Callback<AllPhotosByNasaRoverDTO> {
+        override fun onResponse(call: Call<AllPhotosByNasaRoverDTO>, response: Response<AllPhotosByNasaRoverDTO>) {
+            val serverResponse: AllPhotosByNasaRoverDTO? = response.body()
             if (response.isSuccessful && serverResponse != null) {
-                liveDataForViewToObserve.value = AppState.SuccessRoverPhoto(serverResponse)
+                liveDataForViewToObserve.value = AppState.SuccessRoverPhoto(serverResponse.results)
             } else {
                 liveDataForViewToObserve.postValue(AppState.Error(NullPointerException()))
             }
         }
-        override fun onFailure(call: Call<PhotosByNasaRoverDTO>, t: Throwable) {
+        override fun onFailure(call: Call<AllPhotosByNasaRoverDTO>, t: Throwable) {
             liveDataForViewToObserve.postValue(AppState.Error(NullPointerException())) //TODO что-то адекватное
         }
     }
