@@ -1,5 +1,6 @@
 package space.picture.marslandscapes.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import retrofit2.Call
@@ -28,7 +29,7 @@ class MarsRoverPhotoViewModel(
         override fun onResponse(call: Call<AllPhotosByNasaRoverDTO>, response: Response<AllPhotosByNasaRoverDTO>) {
             val serverResponse: AllPhotosByNasaRoverDTO? = response.body()
             if (response.isSuccessful && serverResponse != null) {
-                liveDataForViewToObserve.value = AppState.SuccessRoverPhoto(serverResponse.results)
+                liveDataForViewToObserve.value = AppState.SuccessRoverPhoto(serverResponse.photos)
             } else {
                 liveDataForViewToObserve.postValue(AppState.Error(NullPointerException()))
             }

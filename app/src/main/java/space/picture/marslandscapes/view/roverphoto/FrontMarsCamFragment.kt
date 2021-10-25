@@ -64,11 +64,12 @@ class FrontMarsCamFragment : Fragment() {
                     binding.frontRoverCam.load(url) {
                         lifecycle(this@FrontMarsCamFragment)
                         error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_system)
+                        placeholder(R.drawable.bg_system)
                     }
                 }
             }
             is AppState.Loading -> binding.pictureLoading.visibility = View.VISIBLE
+            else -> binding.pictureLoading.visibility = View.VISIBLE
         }
     }
 }

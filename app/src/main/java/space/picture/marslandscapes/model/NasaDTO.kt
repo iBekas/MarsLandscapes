@@ -15,7 +15,7 @@ data class NasaDTO(
     val url: String
 ) : Parcelable
 
-data class AllPhotosByNasaRoverDTO(val results:List<PhotosByNasaRoverDTO>)
+data class AllPhotosByNasaRoverDTO(val photos:List<PhotosByNasaRoverDTO>)
 
 @Parcelize
 data class PhotosByNasaRoverDTO(

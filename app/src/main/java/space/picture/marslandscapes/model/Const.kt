@@ -6,5 +6,5 @@ const val NASA_API_URL_END_POINTER = "planetary/apod"
 const val NASA_ROVER_PHOTO_URL_END_POINTER = "mars-photos/api/v1/rovers/curiosity/photos"
 const val FRONT_CAM = "FHAZ"
 const val REAR_CAM = "RHAZ"
-const val PANORAMIC_CAM = "PANCAM"
+const val PANORAMIC_CAM = "NAVCAM"
 const val SOL_FOR_ROVER_CAM: Int = 1000
