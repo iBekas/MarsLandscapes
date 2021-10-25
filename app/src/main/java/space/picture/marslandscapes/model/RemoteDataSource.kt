@@ -11,7 +11,7 @@ class RemoteDataSource {
     private val moviesAPI = Retrofit.Builder()
         .baseUrl(NASA_API_URL)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-        .build().create(PictureOfTheDayAPI::class.java)
+        .build().create(NasaPhotoAPI::class.java)
 
     fun getPictureOfTheToday(apiKey: String, callback: Callback<NasaDTO>) {
         moviesAPI.getPictureOfTheToday(apiKey).enqueue(callback)
@@ -19,5 +19,9 @@ class RemoteDataSource {
 
     fun getPictureOfTheYesterday(date: String, apiKey: String, callback: Callback<NasaDTO>) {
         moviesAPI.getPictureOfTheYesterday(date, apiKey).enqueue(callback)
+    }
+
+    fun getPictureOfMarsRover(sol: Int, camera: String, apiKey: String, callback: Callback<PhotosByNasaRoverDTO>) {
+        moviesAPI.getPictureOfMarsRover(sol, camera, apiKey).enqueue(callback)
     }
 }

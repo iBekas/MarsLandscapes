@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import space.picture.marslandscapes.databinding.PanoramicMarsCamFragmentBinding
+import space.picture.marslandscapes.databinding.RearMarsCamFragmentBinding
 import space.picture.marslandscapes.viewmodel.MarsRoverPhotoViewModel
 
-class PanoramicMarsCamFragment : Fragment() {
+class RearMarsCamFragment : Fragment() {
 
     private val viewModel: MarsRoverPhotoViewModel by lazy {
         ViewModelProvider(this).get(MarsRoverPhotoViewModel::class.java)
     }
 
-    private var _binding: PanoramicMarsCamFragmentBinding? = null
-    private val binding: PanoramicMarsCamFragmentBinding
-        get(): PanoramicMarsCamFragmentBinding {
+    private var _binding: RearMarsCamFragmentBinding? = null
+    private val binding: RearMarsCamFragmentBinding
+        get(): RearMarsCamFragmentBinding {
             return _binding!!
         }
 
@@ -30,8 +30,7 @@ class PanoramicMarsCamFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = PanoramicMarsCamFragmentBinding.inflate(inflater, container, false)
+        _binding = RearMarsCamFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }

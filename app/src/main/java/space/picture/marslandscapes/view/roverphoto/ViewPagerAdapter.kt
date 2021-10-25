@@ -10,7 +10,7 @@ private const val PANORAMIC =2
 
 class ViewPagerAdapter(private val fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = arrayOf(FrontMarsCamFragment(), RealMarsCamFragment(), PanoramicMarsCamFragment())
+    private val fragments = arrayOf(FrontMarsCamFragment(), RearMarsCamFragment(), PanoramicMarsCamFragment())
 
     override fun getItemCount(): Int {
         return fragments.size
