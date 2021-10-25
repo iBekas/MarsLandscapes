@@ -2,6 +2,7 @@ package space.picture.marslandscapes.view.roverphoto
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayoutMediator
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.MarsRoverPhotoActivityBinding
@@ -37,5 +38,6 @@ class MarsRoverPhotoActivity : AppCompatActivity() {
             tabLayout.getTabAt(2)?.customView =
                 layoutInflater.inflate(R.layout.tablayout_mars_panoramic_cam, null)
         }
+        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
     }
 }
