@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
-import space.picture.marslandscapes.databinding.PictureOfTheDayFragmentBinding
+import space.picture.marslandscapes.databinding.PictureOfTheDayStartFragmentBinding
 import space.picture.marslandscapes.model.WIKI_URL
 import space.picture.marslandscapes.util.getDaysAgo
 import space.picture.marslandscapes.util.toast
@@ -33,9 +33,9 @@ class PictureOfTheDayFragment : Fragment() {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
 
-    private var _binding: PictureOfTheDayFragmentBinding? = null
-    private val binding: PictureOfTheDayFragmentBinding
-        get(): PictureOfTheDayFragmentBinding {
+    private var _binding: PictureOfTheDayStartFragmentBinding? = null
+    private val binding: PictureOfTheDayStartFragmentBinding
+        get(): PictureOfTheDayStartFragmentBinding {
             return _binding!!
         }
 
@@ -48,7 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = PictureOfTheDayFragmentBinding.inflate(inflater, container,false)
+        _binding = PictureOfTheDayStartFragmentBinding.inflate(inflater, container,false)
         return binding.root
     }
 
