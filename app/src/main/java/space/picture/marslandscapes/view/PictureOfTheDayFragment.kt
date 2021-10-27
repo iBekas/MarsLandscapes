@@ -48,7 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = PictureOfTheDayFragmentBinding.inflate(inflater, container, false)
+        _binding = PictureOfTheDayFragmentBinding.inflate(inflater, container,false)
         return binding.root
     }
 

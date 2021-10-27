@@ -21,6 +21,7 @@
                 android:id="@+id/chipGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                app:chipSpacingHorizontal="50dp"
                 app:layout_constraintBottom_toTopOf="@id/image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipToday"
                     style="@style/ChipsDayNightTextColor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/chip_today"
@@ -38,7 +39,7 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipYesterday"
                     style="@style/ChipsDayNightTextColor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_yesterday"
                     android:textAlignment="center" />
@@ -46,11 +47,48 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipBeforeYesterday"
                     style="@style/ChipsDayNightTextColor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_before_yesterday"
                     android:textAlignment="center" />
             </com.google.android.material.chip.ChipGroup>
+
+
+            <!--
+                       <com.google.android.material.tabs.TabLayout
+                           android:id="@+id/tabGroup"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           app:layout_constraintBottom_toTopOf="@id/image_view"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent">
+
+                           <com.google.android.material.tabs.TabItem
+                               android:id="@+id/tabToday"
+                               style="@style/ChipsDayNightTextColor"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:checked="true"
+                               android:text="@string/chip_today"
+                               android:textAlignment="center" />
+
+                           <com.google.android.material.tabs.TabItem
+                               android:id="@+id/tabYesterday"
+                               style="@style/ChipsDayNightTextColor"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="@string/chip_yesterday"
+                               android:textAlignment="center" />
+
+                           <com.google.android.material.tabs.TabItem
+                               android:id="@+id/tabBeforeYesterday"
+                               style="@style/ChipsDayNightTextColor"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:text="@string/chip_before_yesterday"
+                               android:textAlignment="center" />
+                       </com.google.android.material.tabs.TabLayout>
+                       -->
 
             <space.picture.marslandscapes.util.EquilateralImageView
                 android:id="@+id/image_view"
@@ -101,16 +139,16 @@
         app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
 
     <!--
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:maxImageSize="@dimen/fab_size"
-            android:backgroundTint="@color/colorAccent"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/ic_plus_fab"
-            app:tint="#FFFFFF" />
-            -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:maxImageSize="@dimen/fab_size"
+    android:backgroundTint="@color/colorAccent"
+    app:layout_anchor="@id/bottom_app_bar"
+    app:srcCompat="@drawable/ic_plus_fab"
+    app:tint="#FFFFFF" />
+    -->
 
 
     <FrameLayout
