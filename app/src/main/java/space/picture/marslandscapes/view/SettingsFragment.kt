@@ -51,13 +51,16 @@ class SettingsFragment : Fragment() {
             chipStandardTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
                 setAppTheme(R.style.AppTheme)
-                activity?.recreate()
+                /* При повторном нажатии на чип, галочка не снимается*/
                 chipStandardTheme.isChecked = true
+                activity?.recreate()
             }
 
             chipBlueberryTheme.setOnClickListener {
                 chipStandardTheme.isChecked = false
                 setAppTheme(R.style.Blueberry)
+                /* При повторном нажатии на чип, галочка не снимается*/
+                chipBlueberryTheme.isChecked = true
                 activity?.recreate()
             }
         }

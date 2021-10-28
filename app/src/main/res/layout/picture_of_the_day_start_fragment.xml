@@ -22,7 +22,7 @@
                 android:id="@+id/chipGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                app:chipSpacingHorizontal="50dp"
+                app:chipSpacingHorizontal="@dimen/picture_of_the_day_chip_group_spacing_hor"
                 app:layout_constraintBottom_toTopOf="@id/image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.Tooltip"
                     android:text="@string/chip_today"
                     android:textAlignment="center" />
 
@@ -53,43 +54,6 @@
                     android:text="@string/chip_before_yesterday"
                     android:textAlignment="center" />
             </com.google.android.material.chip.ChipGroup>
-
-
-            <!--
-                       <com.google.android.material.tabs.TabLayout
-                           android:id="@+id/tabGroup"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           app:layout_constraintBottom_toTopOf="@id/image_view"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintStart_toStartOf="parent">
-
-                           <com.google.android.material.tabs.TabItem
-                               android:id="@+id/tabToday"
-                               style="@style/ChipsDayNightTextColor"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:checked="true"
-                               android:text="@string/chip_today"
-                               android:textAlignment="center" />
-
-                           <com.google.android.material.tabs.TabItem
-                               android:id="@+id/tabYesterday"
-                               style="@style/ChipsDayNightTextColor"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:text="@string/chip_yesterday"
-                               android:textAlignment="center" />
-
-                           <com.google.android.material.tabs.TabItem
-                               android:id="@+id/tabBeforeYesterday"
-                               style="@style/ChipsDayNightTextColor"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:text="@string/chip_before_yesterday"
-                               android:textAlignment="center" />
-                       </com.google.android.material.tabs.TabLayout>
-                       -->
 
             <space.picture.marslandscapes.util.EquilateralImageView
                 android:id="@+id/image_view"

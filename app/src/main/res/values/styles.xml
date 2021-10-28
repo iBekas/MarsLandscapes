@@ -32,6 +32,12 @@
 
     <style name="ChipsDayNightTextColor" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="android:textColor">?textChipsColor</item>
+        <item name="chipCornerRadius">4dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipStartPadding">8dp</item>
+        <item name="chipEndPadding">8dp</item>
+        app:chipStartPadding="8dp"
+        app:chipEndPadding="8dp"
     </style>
 
 

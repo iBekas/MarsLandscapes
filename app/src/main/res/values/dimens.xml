@@ -17,4 +17,5 @@
     <dimen name="text_medium">10sp</dimen>
     <dimen name="text_big_x">15sp</dimen>
     <dimen name="text_big_xx">20sp</dimen>
+    <dimen name="picture_of_the_day_chip_group_spacing_hor">5dp</dimen>
 </resources>

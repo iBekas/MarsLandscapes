@@ -48,7 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = PictureOfTheDayStartFragmentBinding.inflate(inflater, container,false)
+        _binding = PictureOfTheDayStartFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -80,7 +80,7 @@ class PictureOfTheDayFragment : Fragment() {
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()
             }
-            R.id.app_bar_rover -> startActivity(Intent(context,MarsRoverPhotoActivity::class.java))
+            R.id.app_bar_rover -> startActivity(Intent(context, MarsRoverPhotoActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
@@ -123,11 +123,41 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun setBottomSheetBehavior() {
+        /* ВОПРОС! Свайп вверх не работает, не могу найти причину ошибки, где она?) */
         bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     private fun onClickPictureChips() {
+        /* ВОПРОС! Почему при этом варианте приложение падает?
+        binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
+            with(binding) {
+                when (checkedId) {
+                    R.id.chipToday -> {
+                        chipToday.isChecked = false
+                        viewModel.getPictureTodayFromRemoteSource(
+                            BuildConfig.NASA_API_KEY
+                        )
+                        chipToday.isChecked = true
+                    }
+                    R.id.chipYesterday -> {
+                        chipToday.isChecked = false
+                        viewModel.getPictureYesterdayFromRemoteSource(
+                            getDaysAgo(1),
+                            BuildConfig.NASA_API_KEY
+                        )
+                    }
+                    R.id.chipBeforeYesterday -> {
+                        chipToday.isChecked = false
+                        viewModel.getPictureYesterdayFromRemoteSource(
+                            getDaysAgo(2),
+                            BuildConfig.NASA_API_KEY
+                        )
+                    }
+                }
+            }
+         }
+        */
         binding.chipToday.setOnClickListener {
             binding.chipToday.isChecked = false
             viewModel.getPictureTodayFromRemoteSource(
@@ -150,5 +180,7 @@ class PictureOfTheDayFragment : Fragment() {
             )
         }
     }
-
 }
+
+
+
