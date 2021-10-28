@@ -6,106 +6,102 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        app:layoutDescription="@xml/motion_scene">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="@dimen/padding_medium"
-            android:paddingEnd="@dimen/padding_medium"
-            app:layoutDescription="@xml/motion_scene">
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:chipSpacingHorizontal="@dimen/picture_of_the_day_chip_group_spacing_hor"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:singleSelection="true">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipToday"
+                style="@style/ChipsDayNightTextColor"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:chipSpacingHorizontal="@dimen/picture_of_the_day_chip_group_spacing_hor"
-                app:layout_constraintBottom_toTopOf="@id/cardView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:singleSelection="true">
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/chip_today"
+                android:textAlignment="center"
+                app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.Tooltip" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipToday"
-                    style="@style/ChipsDayNightTextColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.Tooltip"
-                    android:text="@string/chip_today"
-                    android:textAlignment="center" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipYesterday"
+                style="@style/ChipsDayNightTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_yesterday"
+                android:textAlignment="center" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipYesterday"
-                    style="@style/ChipsDayNightTextColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chip_yesterday"
-                    android:textAlignment="center" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBeforeYesterday"
+                style="@style/ChipsDayNightTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_before_yesterday"
+                android:textAlignment="center" />
+        </com.google.android.material.chip.ChipGroup>
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipBeforeYesterday"
-                    style="@style/ChipsDayNightTextColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chip_before_yesterday"
-                    android:textAlignment="center" />
-            </com.google.android.material.chip.ChipGroup>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            style="@style/PictureOfTheDayCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView"
-                style="@style/PictureOfTheDayCard"
+            <space.picture.marslandscapes.util.EquilateralImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/photo_of_the_day_stub"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/btnWiki"
+            style="@style/WikiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wikipedia"
+            app:layout_constraintBottom_toBottomOf="@id/input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/input_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
+            style="@style/WikiStyle"
+            android:layout_width="@dimen/picture_fragment_text_input_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_extra_large"
+            android:hint="@string/search_wiki"
+            app:helperText="@string/wiki_helper_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
-                <space.picture.marslandscapes.util.EquilateralImageView
-                    android:id="@+id/image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/photo_of_the_day_stub"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/ic_no_photo_vector" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <ImageView
-                android:id="@+id/btnWiki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="14dp"
-                android:src="@drawable/ic_wikipedia"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/input_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/input_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout"
-                style="@style/WikiStyle"
-                android:layout_width="@dimen/picture_fragment_text_input_width"
-                android:layout_height="wrap_content"
-                android:hint="@string/search_wiki"
-                app:helperText="@string/wiki_helper_text"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardView">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.constraintlayout.motion.widget.MotionLayout>
-    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/include_layout"

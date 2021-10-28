@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/main"
@@ -16,17 +14,17 @@
             android:layout_height="match_parent"
             android:paddingStart="@dimen/padding_medium"
             android:paddingEnd="@dimen/padding_medium"
-            app:layoutDescription="@xml/motion_scene"
-            app:layout_constraintVertical_chainStyle="spread_inside">
+            app:layoutDescription="@xml/motion_scene">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 app:chipSpacingHorizontal="@dimen/picture_of_the_day_chip_group_spacing_hor"
-                app:layout_constraintBottom_toTopOf="@id/cardView"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
@@ -60,8 +58,6 @@
                 style="@style/PictureOfTheDayCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,10 +75,9 @@
 
             <ImageView
                 android:id="@+id/btnWiki"
+                style="@style/WikiButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="14dp"
                 android:src="@drawable/ic_wikipedia"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/input_layout"
@@ -96,10 +91,11 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_wiki"
                 app:helperText="@string/wiki_helper_text"
+                android:layout_marginBottom="@dimen/margin_extra_large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardView">
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
@@ -108,7 +104,6 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.motion.widget.MotionLayout>
-    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/include_layout"

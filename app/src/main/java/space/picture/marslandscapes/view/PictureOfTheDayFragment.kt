@@ -123,7 +123,6 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun setBottomSheetBehavior() {
-        /* ВОПРОС! Свайп вверх не работает, не могу найти причину ошибки, где она?) */
         bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
