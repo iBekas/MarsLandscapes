@@ -54,5 +54,11 @@
         <item name="android:maxLines">2</item>
     </style>
 
+    <style name="PictureOfTheDayCard" parent="">
+        <item name="android:layout_margin">@dimen/margin_small</item>
+        <item name="android:elevation">20dp</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+
 
 </resources>

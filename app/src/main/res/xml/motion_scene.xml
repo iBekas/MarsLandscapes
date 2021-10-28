@@ -13,7 +13,7 @@
         app:constraintSetEnd="@layout/picture_of_the_day_start_fragment"
         app:constraintSetStart="@layout/picture_of_the_day_end_fragment"
         app:duration="1000">
-        <OnClick app:targetId="@+id/image_view"/>
+        <OnClick app:targetId="@+id/cardView"/>
     </Transition>
 
 </MotionScene>

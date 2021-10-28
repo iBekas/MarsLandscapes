@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 app:chipSpacingHorizontal="@dimen/picture_of_the_day_chip_group_spacing_hor"
-                app:layout_constraintBottom_toTopOf="@id/image_view"
+                app:layout_constraintBottom_toTopOf="@id/cardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:singleSelection="true">
@@ -55,18 +55,26 @@
                     android:textAlignment="center" />
             </com.google.android.material.chip.ChipGroup>
 
-            <space.picture.marslandscapes.util.EquilateralImageView
-                android:id="@+id/image_view"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                style="@style/PictureOfTheDayCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <space.picture.marslandscapes.util.EquilateralImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/photo_of_the_day_stub"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_no_photo_vector" />
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageView
                 android:id="@+id/btnWiki"
@@ -88,7 +96,7 @@
                 android:hint="@string/search_wiki"
                 app:helperText="@string/wiki_helper_text"
                 app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_view">
+                app:layout_constraintTop_toBottomOf="@id/cardView">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
