@@ -1,4 +1,4 @@
-package space.picture.marslandscapes.view
+package space.picture.marslandscapes.view.pictureoftheday
 
 import android.content.Intent
 import android.os.Bundle

@@ -3,6 +3,8 @@ package space.picture.marslandscapes.view
 
 import androidx.appcompat.app.AppCompatActivity
 import space.picture.marslandscapes.R
+import space.picture.marslandscapes.view.pictureoftheday.PictureOfTheDayFragment
+import space.picture.marslandscapes.view.settings.SettingsFragment
 
 
 abstract class FragmentChoice : AppCompatActivity() {

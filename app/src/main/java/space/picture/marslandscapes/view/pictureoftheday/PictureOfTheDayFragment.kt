@@ -1,4 +1,4 @@
-package space.picture.marslandscapes.view
+package space.picture.marslandscapes.view.pictureoftheday
 
 import android.content.Intent
 import android.net.Uri
@@ -16,6 +16,8 @@ import space.picture.marslandscapes.databinding.PictureOfTheDayStartFragmentBind
 import space.picture.marslandscapes.model.WIKI_URL
 import space.picture.marslandscapes.util.getDaysAgo
 import space.picture.marslandscapes.util.toast
+import space.picture.marslandscapes.view.MainActivity
+import space.picture.marslandscapes.view.settings.SettingsFragment
 import space.picture.marslandscapes.view.roverphoto.MarsRoverPhotoActivity
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
@@ -55,6 +57,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior()
+//        PictureBottomSheet.newInstance().show(requireActivity().supportFragmentManager, PictureBottomSheet.TAG)
         searchWikipedia()
         setMenuOnBottomBar()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })

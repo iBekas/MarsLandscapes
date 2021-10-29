@@ -1,4 +1,4 @@
-package space.picture.marslandscapes.view
+package space.picture.marslandscapes.view.settings
 
 import android.content.Context
 import android.content.SharedPreferences

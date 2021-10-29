@@ -7,7 +7,7 @@ import android.view.Gravity
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import space.picture.marslandscapes.R
-import space.picture.marslandscapes.view.SettingsFragment
+import space.picture.marslandscapes.view.settings.SettingsFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
