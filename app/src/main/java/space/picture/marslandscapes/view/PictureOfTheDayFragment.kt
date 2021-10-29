@@ -81,7 +81,13 @@ class PictureOfTheDayFragment : Fragment() {
                 ).addToBackStack(null).commit()
             }
             R.id.app_bar_rover -> startActivity(Intent(context, MarsRoverPhotoActivity::class.java))
+            android.R.id.home -> {
+                BottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
+            }
         }
+
+
         return super.onOptionsItemSelected(item)
     }
 
