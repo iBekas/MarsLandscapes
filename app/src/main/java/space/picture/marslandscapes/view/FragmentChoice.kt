@@ -17,7 +17,7 @@ abstract class FragmentChoice : AppCompatActivity() {
     fun getFragmentByFragmentId(fragment: Int): Int {
         return when (fragment) {
             PICTURE_FRAGMENT -> supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).addToBackStack("").commit()
+                .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
             SETTINGS_FRAGMENT -> supportFragmentManager.beginTransaction()
                 .detach(SettingsFragment.newInstance())
                 .attach(SettingsFragment.newInstance())
