@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import space.picture.marslandscapes.BuildConfig
 
 
 class RemoteDataSource {
@@ -14,14 +15,14 @@ class RemoteDataSource {
         .build().create(NasaPhotoAPI::class.java)
 
     fun getPictureOfTheToday(apiKey: String, callback: Callback<NasaDTO>) {
-        moviesAPI.getPictureOfTheToday(apiKey).enqueue(callback)
+        moviesAPI.getPictureOfTheToday(BuildConfig.NASA_API_KEY, apiKey).enqueue(callback)
     }
 
     fun getPictureOfTheYesterday(date: String, apiKey: String, callback: Callback<NasaDTO>) {
-        moviesAPI.getPictureOfTheYesterday(date, apiKey).enqueue(callback)
+        moviesAPI.getPictureOfTheYesterday(BuildConfig.NASA_API_KEY, date, apiKey).enqueue(callback)
     }
 
     fun getPictureOfMarsRover(sol: Int, camera: String, apiKey: String, callback: Callback<AllPhotosByNasaRoverDTO>) {
-        moviesAPI.getPictureOfMarsRover(sol, camera, apiKey).enqueue(callback)
+        moviesAPI.getPictureOfMarsRover(BuildConfig.NASA_API_KEY, sol, camera, apiKey).enqueue(callback)
     }
 }
