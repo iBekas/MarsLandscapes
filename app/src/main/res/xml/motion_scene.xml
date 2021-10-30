@@ -10,8 +10,8 @@ xmlns:motion="urn:oasis:names:tc:xliff:document:1.2">
     <OnSwipe
         motion:touchAnchorId="@id/btnWiki"
         motion:touchAnchorSide="left"
-        motion:dragDirection="dragLeft"/>
-    <OnClick app:targetId="@+id/btnWiki"/>
+        app:dragDirection="dragLeft"/>
+
 </Transition>
 
 <Transition
@@ -19,10 +19,10 @@ xmlns:motion="urn:oasis:names:tc:xliff:document:1.2">
     app:constraintSetStart="@layout/picture_of_the_day_end_fragment"
     app:duration="1000">
     <OnSwipe
-        motion:touchAnchorId="@id/image_view"
+        motion:touchAnchorId="@id/input_layout"
         motion:touchAnchorSide="right"
-        motion:dragDirection="dragRight"/>
-    <!--<OnClick app:targetId="@+id/cardView"/>-->
+        app:dragDirection="dragRight"/>
+
 </Transition>
 
 </MotionScene>

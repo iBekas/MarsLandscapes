@@ -137,16 +137,13 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun onClickPictureChips() {
-        /* ВОПРОС! Почему при этом варианте приложение падает?
         binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
             with(binding) {
                 when (checkedId) {
                     R.id.chipToday -> {
-                        chipToday.isChecked = false
                         viewModel.getPictureTodayFromRemoteSource(
                             BuildConfig.NASA_API_KEY
                         )
-                        chipToday.isChecked = true
                     }
                     R.id.chipYesterday -> {
                         chipToday.isChecked = false
@@ -165,28 +162,7 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
          }
-        */
-        binding.chipToday.setOnClickListener {
-            binding.chipToday.isChecked = false
-            viewModel.getPictureTodayFromRemoteSource(
-                BuildConfig.NASA_API_KEY
-            )
-            binding.chipToday.isChecked = true
-        }
-        binding.chipYesterday.setOnClickListener {
-            binding.chipToday.isChecked = false
-            viewModel.getPictureYesterdayFromRemoteSource(
-                getDaysAgo(1),
-                BuildConfig.NASA_API_KEY
-            )
-        }
-        binding.chipBeforeYesterday.setOnClickListener {
-            binding.chipToday.isChecked = false
-            viewModel.getPictureYesterdayFromRemoteSource(
-                getDaysAgo(2),
-                BuildConfig.NASA_API_KEY
-            )
-        }
+
     }
 }
 
