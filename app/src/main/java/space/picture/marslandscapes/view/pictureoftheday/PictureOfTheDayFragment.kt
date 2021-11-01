@@ -78,7 +78,14 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_settings -> activity?.supportFragmentManager?.apply {
-                beginTransaction().replace(
+                beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.enter_fragment,
+                        R.anim.exit_fragment,
+                        R.anim.enter_fragment_in,
+                        R.anim.exit_fragment_out
+                    )
+                    .add(
                     R.id.container,
                     SettingsFragment.newInstance()
                 ).addToBackStack(null).commit()

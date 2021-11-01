@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorOnPrimary"
+    android:layout_marginBottom="@dimen/margin_big"
+    android:layout_marginEnd="@dimen/margin_big"
+    android:layout_marginStart="@dimen/margin_big"
+    android:elevation="@dimen/settings_fragment_elevation"
+    android:background="@drawable/fragment_corner"
     tools:context=".view.settings.SettingsFragment">
 
 
@@ -16,7 +20,7 @@
         android:text="@string/settings__text_view_theme"
         app:layout_constraintEnd_toStartOf="@id/scrollViw"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintHorizontal_weight="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +28,7 @@
         android:id="@+id/scrollViw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="0.8"
         app:layout_constraintStart_toEndOf="@id/theme"
