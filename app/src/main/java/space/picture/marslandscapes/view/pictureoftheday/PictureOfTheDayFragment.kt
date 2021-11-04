@@ -31,6 +31,8 @@ import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
+    private var isExpanded = false
+
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
     }
@@ -169,13 +171,17 @@ class PictureOfTheDayFragment : Fragment() {
          }
     }
 
-    private var isExpanded = false
-
     private fun setDescription() {
         binding.showDetails.setOnClickListener {
             if (!isExpanded) expandDescription()
         }
-        binding.constraintContainer.setOnClickListener {
+        binding.bottomSheetDescription.setOnClickListener {
+            if (isExpanded) collapseDescription()
+        }
+        binding.bottomSheetDescriptionHeader.setOnClickListener {
+            if (isExpanded) collapseDescription()
+        }
+        binding.bottomSheetLine.setOnClickListener {
             if (isExpanded) collapseDescription()
         }
     }

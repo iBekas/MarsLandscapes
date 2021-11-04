@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?colorOnPrimary">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/constraint_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/padding_medium"
-            android:paddingEnd="@dimen/padding_medium">
+            android:paddingEnd="@dimen/padding_medium"
+            app:layoutDescription="@xml/motion_scene">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineTop"
@@ -138,11 +139,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/description_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?colorOnPrimary"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_constraint"
+                android:elevation="20dp"
+
+                android:visibility="visible"
+                android:translationY="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/guidelineMedium">
 
                 <View
@@ -182,13 +188,14 @@
                         <TextView
                             android:id="@+id/bottom_sheet_description"
                             style="@style/BodyTextBottomSheet"
+                            android:text="?textChipsColor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             tools:text="@string/bootom_sheet_body_text"/>
                     </LinearLayout>
                 </ScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -232,4 +239,4 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
     </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

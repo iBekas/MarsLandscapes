@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/constraint_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/padding_medium"
-        android:paddingEnd="@dimen/padding_medium">
+        android:paddingEnd="@dimen/padding_medium"
+        app:layoutDescription="@xml/motion_scene">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
@@ -93,6 +94,16 @@
                 app:srcCompat="@drawable/ic_no_photo_vector" />
         </com.google.android.material.card.MaterialCardView>
 
+        <ImageView
+            android:id="@+id/btnWiki"
+            style="@style/WikiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wikipedia"
+            app:layout_constraintBottom_toBottomOf="@id/input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/input_layout" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout"
             style="@style/WikiStyle"
@@ -102,8 +113,7 @@
             app:helperText="@string/wiki_helper_text"
             android:layout_marginBottom="@dimen/margin_extra_large"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guidelineBottom">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -185,7 +195,7 @@
                 </LinearLayout>
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
