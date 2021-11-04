@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?colorOnPrimary">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/main"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/padding_medium"
-            android:paddingEnd="@dimen/padding_medium"
-            app:layoutDescription="@xml/motion_scene">
+            android:paddingEnd="@dimen/padding_medium">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineTop"
@@ -122,11 +121,74 @@
                     android:layout_height="wrap_content"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
-        </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    <include
-        android:id="@+id/include_layout"
-        layout="@layout/bottom_sheet_layout" />
+            <TextView
+                android:id="@+id/showDetails"
+                style="@style/SettingsTextHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/show_details_text"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/input_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/description_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guidelineMedium">
+
+                <View
+                    android:id="@+id/bottom_sheet_line"
+                    style="@style/LineBottomSheet"
+                    android:layout_width="@dimen/bottom_sheet_line_width"
+                    android:layout_height="@dimen/bottom_sheet_line_height"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/bottom_sheet_description_header"
+                    style="@style/HeadText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
+                    tools:text="@string/bootom_sheet_head_text" />
+
+
+                <ScrollView
+                    android:id="@+id/scrollView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header">
+
+                    <LinearLayout
+                        android:id="@+id/linear_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/bottom_sheet_description"
+                            style="@style/BodyTextBottomSheet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/bootom_sheet_body_text"/>
+                    </LinearLayout>
+                </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -137,7 +199,11 @@
         app:fabAlignmentMode="center"
         app:hideOnScroll="true"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="BottomAppBar" />
 
     <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -166,4 +232,4 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
     </FrameLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

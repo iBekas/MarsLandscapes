@@ -19,4 +19,5 @@
     <string name="front_cam">Front Cam</string>
     <string name="real_cam">Real Cam</string>
     <string name="panoramic_cam">Panoramic Cam</string>
+    <string name="show_details_text">Show details</string>
 </resources>

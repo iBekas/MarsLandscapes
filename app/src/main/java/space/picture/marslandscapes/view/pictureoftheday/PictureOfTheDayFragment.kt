@@ -1,14 +1,20 @@
 package space.picture.marslandscapes.view.pictureoftheday
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
 import android.view.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.animation.AnticipateOvershootInterpolator
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
@@ -17,8 +23,8 @@ import space.picture.marslandscapes.model.WIKI_URL
 import space.picture.marslandscapes.util.getDaysAgo
 import space.picture.marslandscapes.util.toast
 import space.picture.marslandscapes.view.MainActivity
-import space.picture.marslandscapes.view.settings.SettingsFragment
 import space.picture.marslandscapes.view.roverphoto.MarsRoverPhotoActivity
+import space.picture.marslandscapes.view.settings.SettingsFragment
 import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.PictureOfTheDayViewModel
 import java.util.*
@@ -28,8 +34,6 @@ class PictureOfTheDayFragment : Fragment() {
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
     }
-
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
@@ -56,10 +60,9 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBottomSheetBehavior()
-//        PictureBottomSheet.newInstance().show(requireActivity().supportFragmentManager, PictureBottomSheet.TAG)
         searchWikipedia()
         setMenuOnBottomBar()
+        setDescription()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureTodayFromRemoteSource(BuildConfig.NASA_API_KEY)
         onClickPictureChips()
@@ -118,9 +121,9 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
-                    binding.includeLayout.bottomSheetDescriptionHeader.text =
+                    binding.bottomSheetDescriptionHeader.text =
                         appState.dataNasa.title
-                    binding.includeLayout.bottomSheetDescription.text =
+                    binding.bottomSheetDescription.text =
                         appState.dataNasa.explanation
                 }
             }
@@ -136,11 +139,6 @@ class PictureOfTheDayFragment : Fragment() {
                     Uri.parse("$WIKI_URL${binding.inputEditText.text.toString()}")
             })
         }
-    }
-
-    private fun setBottomSheetBehavior() {
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.includeLayout.bottomSheetContainer)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     private fun onClickPictureChips() {
@@ -169,7 +167,29 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
          }
+    }
 
+    private var isExpanded = false
+
+    private fun setDescription() {
+        binding.showDetails.setOnClickListener {
+            if (!isExpanded) expandDescription()
+        }
+        binding.constraintContainer.setOnClickListener {
+            if (isExpanded) collapseDescription()
+        }
+    }
+
+    private fun expandDescription() {
+        isExpanded = true
+        ObjectAnimator.ofFloat(binding.descriptionContainer, "translationY", -50f).start()
+        binding.descriptionContainer.animate().duration = 300
+    }
+
+    private fun collapseDescription() {
+        isExpanded = false
+        ObjectAnimator.ofFloat(binding.descriptionContainer, "translationY", 500f).start()
+        binding.descriptionContainer.animate().duration = 300
     }
 }
 
