@@ -80,7 +80,6 @@
                 android:translationX="-500dp"
                 android:background="?colorOnPrimary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/chipGroup"
                 app:layout_constraintBottom_toTopOf="@id/cardView"
                 tools:text="@string/bootom_sheet_head_text">
 
