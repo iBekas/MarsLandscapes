@@ -73,6 +73,26 @@
             </com.google.android.material.chip.ChipGroup>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_description_header"
+                style="@style/PictureOfTheDayCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationX="-500dp"
+                android:background="?colorOnPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/chipGroup"
+                app:layout_constraintBottom_toTopOf="@id/cardView"
+                tools:text="@string/bootom_sheet_head_text">
+
+                <TextView
+                    android:id="@+id/description_header"
+                    style="@style/HeadText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
                 style="@style/PictureOfTheDayCard"
                 android:layout_width="match_parent"
@@ -160,24 +180,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/bottom_sheet_description_header"
-                    style="@style/HeadText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
-                    tools:text="@string/bootom_sheet_head_text" />
-
-
                 <ScrollView
                     android:id="@+id/scrollView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header">
+                    app:layout_constraintTop_toBottomOf="@id/bottom_sheet_line">
 
                     <LinearLayout
                         android:id="@+id/linear_container"

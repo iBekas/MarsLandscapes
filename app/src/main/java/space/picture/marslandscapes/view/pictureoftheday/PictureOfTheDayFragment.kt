@@ -123,7 +123,7 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
-                    binding.bottomSheetDescriptionHeader.text =
+                    binding.descriptionHeader.text =
                         appState.dataNasa.title
                     binding.bottomSheetDescription.text =
                         appState.dataNasa.explanation
@@ -178,9 +178,6 @@ class PictureOfTheDayFragment : Fragment() {
         binding.bottomSheetDescription.setOnClickListener {
             if (isExpanded) collapseDescription()
         }
-        binding.bottomSheetDescriptionHeader.setOnClickListener {
-            if (isExpanded) collapseDescription()
-        }
         binding.bottomSheetLine.setOnClickListener {
             if (isExpanded) collapseDescription()
         }
@@ -189,12 +186,14 @@ class PictureOfTheDayFragment : Fragment() {
     private fun expandDescription() {
         isExpanded = true
         ObjectAnimator.ofFloat(binding.descriptionContainer, "translationY", -50f).start()
+        ObjectAnimator.ofFloat(binding.cardDescriptionHeader, "translationX", 0f).start()
         binding.descriptionContainer.animate().duration = 300
     }
 
     private fun collapseDescription() {
         isExpanded = false
         ObjectAnimator.ofFloat(binding.descriptionContainer, "translationY", 500f).start()
+        ObjectAnimator.ofFloat(binding.cardDescriptionHeader, "translationX", -1200f).start()
         binding.descriptionContainer.animate().duration = 300
     }
 }
