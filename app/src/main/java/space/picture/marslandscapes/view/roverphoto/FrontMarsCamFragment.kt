@@ -5,8 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.api.load
 import space.picture.marslandscapes.BuildConfig
 import space.picture.marslandscapes.R
@@ -18,6 +23,8 @@ import space.picture.marslandscapes.viewmodel.AppState
 import space.picture.marslandscapes.viewmodel.MarsRoverPhotoViewModel
 
 class FrontMarsCamFragment : Fragment() {
+
+    private var isExpanded = false
 
     private val viewModel: MarsRoverPhotoViewModel by lazy {
         ViewModelProvider(this).get(MarsRoverPhotoViewModel::class.java)
@@ -44,6 +51,7 @@ class FrontMarsCamFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        animImage()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureOfMarsRover(SOL_FOR_ROVER_CAM, FRONT_CAM, BuildConfig.NASA_API_KEY)
     }
@@ -70,6 +78,23 @@ class FrontMarsCamFragment : Fragment() {
             }
             is AppState.Loading -> binding.pictureLoading.visibility = View.VISIBLE
             else -> binding.pictureLoading.visibility = View.VISIBLE
+        }
+    }
+
+    private fun animImage() {
+        binding.frontRoverCam.setOnClickListener {
+            isExpanded= !isExpanded
+
+            val set = TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+
+            TransitionManager.beginDelayedTransition(binding.frontContainer,set)
+            binding.frontRoverCam.scaleType = if(isExpanded){
+                ImageView.ScaleType.CENTER_CROP
+            }else{
+                ImageView.ScaleType.FIT_CENTER
+            }
         }
     }
 }
