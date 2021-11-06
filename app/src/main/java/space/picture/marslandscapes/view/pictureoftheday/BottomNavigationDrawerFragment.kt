@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.BottomNavigationLayoutBinding
-import space.picture.marslandscapes.util.toast
-import space.picture.marslandscapes.view.roverphoto.MarsRoverPhotoActivity
+import space.picture.marslandscapes.view.notes.NotesActivity
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
@@ -31,8 +30,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { item->
             when (item.itemId) {
-                R.id.app_bar_settings -> toast("В работе")
-                R.id.app_bar_rover -> startActivity(Intent(context, MarsRoverPhotoActivity::class.java))
+                R.id.app_checklist -> startActivity(Intent(context, NotesActivity::class.java))
             }
             true
         }

@@ -19,4 +19,5 @@
     <string name="real_cam">Задняя камера</string>
     <string name="panoramic_cam">Панорамная камера</string>
     <string name="show_details_text">Показать описание</string>
+    <string name="notes">Заметки</string>
 </resources>
