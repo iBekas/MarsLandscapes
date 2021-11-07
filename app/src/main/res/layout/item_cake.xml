@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="15dp"
-    android:backgroundTint="@color/yellow"
     android:layout_marginBottom="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:backgroundTint="@color/yellow"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,15 +21,16 @@
             android:layout_gravity="top"
             app:layout_constraintBaseline_toBaselineOf="@id/note_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_flag_xx"/>
+            app:srcCompat="@drawable/ic_cake" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/note_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="Имя"
+            android:maxLines="2"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:hint="Название заметки"
             app:layout_constraintEnd_toStartOf="@+id/time"
             app:layout_constraintStart_toEndOf="@id/user_favorite"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,24 +39,13 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="Дата рождения"
+            android:maxLines="2"
             android:textColor="@color/black"
-            android:textSize="10sp"
-            android:hint="10.10.2021 12:30"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/note_name"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/marsDescriptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Ваша заметка"
-            android:textColor="#000"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/note_name"
-            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

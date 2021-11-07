@@ -28,4 +28,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/plusNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_big"
+        app:maxImageSize="@dimen/fab_size"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_cake"
+        android:visibility="gone"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintCircleRadius="70dp"
+        app:layout_constraintCircleAngle="280"
+        app:layout_constraintCircle="@id/recyclerNotesFAB"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/plusCake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_big"
+        app:maxImageSize="@dimen/fab_size"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_checklist"
+        android:visibility="gone"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintCircleRadius="70dp"
+        app:layout_constraintCircleAngle="340"
+        app:layout_constraintCircle="@id/recyclerNotesFAB"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
