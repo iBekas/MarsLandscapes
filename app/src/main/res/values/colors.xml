@@ -12,6 +12,10 @@
     <color name="colorAccent">#D81B60</color>
     <color name="color_gray">#66000000</color>
     <color name="yellow">#d9dc53</color>
+    <color name="dark_yellow">#cccc00</color>
     <color name="light_grey">#ddd</color>
+    <color name="grey">#663b4351</color>
     <color name="dark_grey">#aaa</color>
+    <color name="light_blue">#b0c4de</color>
+    <color name="colorAccent40Alfa">#66D81B60</color>
 </resources>

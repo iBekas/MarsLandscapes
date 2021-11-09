@@ -4,44 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".view.SettingsFragment">
+    android:layout_marginBottom="@dimen/margin_big"
+    android:layout_marginEnd="@dimen/margin_big"
+    android:layout_marginStart="@dimen/margin_big"
+    android:elevation="@dimen/settings_fragment_elevation"
+    android:background="@drawable/fragment_corner"
+    tools:context=".view.settings.SettingsFragment">
 
 
     <TextView
         android:id="@+id/theme"
-        android:layout_width="wrap_content"
+        style="@style/SettingsTextHead"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/settings__text_view_theme"
-        android:textSize="@dimen/settings_text_view_size"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/scrollViw"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipThemeGroup"
-        android:layout_width="wrap_content"
+    <HorizontalScrollView
+        android:id="@+id/scrollViw"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="0.8"
         app:layout_constraintStart_toEndOf="@id/theme"
-        app:layout_constraintTop_toTopOf="parent"
-        app:singleSelection="true">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="match_parent"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipThemeGroup"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/settings_chip_name_standart"
-            android:textAlignment="center" />
+            app:singleLine="true"
+            app:singleSelection="true">
 
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_chip_name_miracle"
-            android:textAlignment="center" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipStandardTheme"
+                style="@style/ChipsDayNightTextColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/settings_chip_name_standart"
+                android:textAlignment="center" />
 
-    </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBlueberryTheme"
+                style="@style/ChipsDayNightTextColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_chip_name_miracle"
+                android:textAlignment="center" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

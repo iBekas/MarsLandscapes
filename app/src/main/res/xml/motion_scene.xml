@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:motion="urn:oasis:names:tc:xliff:document:1.2">
+
+<Transition
+    app:constraintSetStart="@layout/picture_of_the_day_start_fragment"
+    app:constraintSetEnd="@layout/picture_of_the_day_end_fragment"
+    app:duration="1000">
+    <OnSwipe
+        motion:touchAnchorId="@id/btnWiki"
+        motion:touchAnchorSide="left"
+        app:dragDirection="dragLeft"/>
+
+</Transition>
+
+<Transition
+    app:constraintSetEnd="@layout/picture_of_the_day_start_fragment"
+    app:constraintSetStart="@layout/picture_of_the_day_end_fragment"
+    app:duration="1000">
+    <OnSwipe
+        motion:touchAnchorId="@id/input_layout"
+        motion:touchAnchorSide="right"
+        app:dragDirection="dragRight"/>
+
+</Transition>
+
+</MotionScene>

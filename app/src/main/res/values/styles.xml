@@ -1,26 +1,67 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Demo.BottomSheetDialog</item>
+    <style name="WikiStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">20</item>
+        <item name="endIconCheckable">true</item>
+        <item name="endIconDrawable">@drawable/ic_wikipedia</item>
+        <item name="endIconMode">custom</item>
+        <item name="android:textColorHint">?textInputLayoutColorHint</item>
+        <item name="counterTextColor">?textInputLayoutColorHint</item>
+        <item name="helperTextTextColor">?textInputLayoutColorHint</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.Demo" parent="">
-        <item name="cornerSize">8dp</item>
-        <item name="cornerFamily">rounded</item>
+    <style name="LineBottomSheet" parent="">
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:background">@color/grey</item>
     </style>
 
-    <style
-        name="ThemeOverlay.Demo.BottomSheetDialog"
-        parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/Widget.Demo.BottomSheet</item>
+    <style name="HeadText" parent="">
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:paddingStart">@dimen/padding_medium</item>
+        <item name="android:paddingEnd">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Widget.Demo.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Demo</item>
+    <style name="BodyTextBottomSheet" parent="">
+        <item name="android:paddingStart">@dimen/padding_medium</item>
+        <item name="android:paddingEnd">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
+
+    <style name="ChipsDayNightTextColor" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">?textChipsColor</item>
+        <item name="chipCornerRadius">4dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipStartPadding">8dp</item>
+        <item name="chipEndPadding">8dp</item>
+        app:chipStartPadding="8dp"
+        app:chipEndPadding="8dp"
+    </style>
+
+
+    <style name="SettingsTextHead" parent="">
+        <item name="android:textSize">@dimen/settings_text_view_size</item>
+        <item name="android:textColor">?textHeadColorSettings</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MarsCamTabLayoutItem" parent="">
+        <item name="android:drawablePadding">@dimen/padding_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="PictureOfTheDayCard" parent="">
+        <item name="android:layout_margin">@dimen/margin_small</item>
+        <item name="android:elevation">20dp</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+
+    <style name="WikiButton" parent="">
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginBottom">14dp</item>
     </style>
 </resources>
