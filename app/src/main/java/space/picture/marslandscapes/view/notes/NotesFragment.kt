@@ -20,7 +20,7 @@ class NotesFragment : Fragment() {
     private var isExpanded = false
     private var count: Int = 0
     private val myLocale: Locale = Locale("ru", "RU")
-    private var data: MutableList<ItemNotes> = arrayListOf(generateItemNote(), generateItemCake())
+    private var data: MutableList<Pair<ItemNotes,Boolean>> = arrayListOf()
 
     private val notesAdapter = NotesAdapter(data, count, myLocale)
 
@@ -80,18 +80,6 @@ class NotesFragment : Fragment() {
     private fun setupFabs(){
         binding.plusNote.setOnClickListener { notesAdapter.appendItemNote() }
         binding.plusCake.setOnClickListener { notesAdapter.appendItemCake() }
-    }
-
-    private fun generateItemNote(): ItemNote{
-        count++
-        return ItemNote(
-            if(isAdded){requireActivity().resources.getString(R.string.note)+count} else String.format("Заметка №%d", count),
-            SimpleDateFormat("dd.MM.yyyy HH:mm", myLocale).format(Date())
-        )
-    }
-
-    private fun generateItemCake(): ItemCake{
-        return ItemCake("Вася", "01.01.2021")
     }
 
     companion object {

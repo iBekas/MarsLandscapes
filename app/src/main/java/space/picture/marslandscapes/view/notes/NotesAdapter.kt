@@ -1,21 +1,16 @@
 package space.picture.marslandscapes.view.notes
 
-import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import space.picture.marslandscapes.R
-import space.picture.marslandscapes.databinding.FragmentNotesBinding
 import space.picture.marslandscapes.databinding.ItemCakeBinding
 import space.picture.marslandscapes.databinding.ItemNoteBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class NotesAdapter(private var data: MutableList<ItemNotes>, private var count: Int, private val myLocale: Locale) : RecyclerView.Adapter<BaseHolder>() {
+class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, private var count: Int, private val myLocale: Locale) : RecyclerView.Adapter<BaseHolder>() {
 
 
     companion object {
@@ -24,12 +19,12 @@ class NotesAdapter(private var data: MutableList<ItemNotes>, private var count: 
     }
 
     fun appendItemNote() {
-        data.add(generateItemNote())
+        data.add(Pair(generateItemNote(), false))
         notifyItemInserted(itemCount - 1)
     }
 
     fun appendItemCake() {
-        data.add(generateItemCake())
+        data.add(Pair(generateItemCake(), false))
         notifyItemInserted(itemCount - 1)
     }
 
@@ -37,7 +32,7 @@ class NotesAdapter(private var data: MutableList<ItemNotes>, private var count: 
         return when (viewType) {
             TYPE_NOTE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-                NoteHolder(ItemNoteBinding.bind(view))
+                NoteHolder(ItemNoteBinding.bind(view), data)
             }
             TYPE_CAKE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cake, parent, false)
@@ -45,7 +40,7 @@ class NotesAdapter(private var data: MutableList<ItemNotes>, private var count: 
             }
             else -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-                NoteHolder(ItemNoteBinding.bind(view))
+                NoteHolder(ItemNoteBinding.bind(view), data)
             }
         }
     }
@@ -55,7 +50,7 @@ class NotesAdapter(private var data: MutableList<ItemNotes>, private var count: 
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(data[position]){
+        return when(data[position].first){
             is ItemNote -> TYPE_NOTE
             is ItemCake -> TYPE_CAKE
         }
