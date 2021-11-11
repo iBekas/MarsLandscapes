@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.FragmentNotesBinding
 import space.picture.marslandscapes.databinding.PictureOfTheDayStartFragmentBinding
@@ -22,7 +24,15 @@ class NotesFragment : Fragment() {
     private val myLocale: Locale = Locale("ru", "RU")
     private var data: MutableList<ItemNotes> = arrayListOf()
 
-    private val notesAdapter = NotesAdapter(data, count, myLocale)
+    private val notesAdapter = NotesAdapter(
+        object: OnStartDragListener {
+            override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                itemTouchHelper.startDrag(viewHolder)
+            }
+
+        }, data, count, myLocale)
+
+    lateinit var itemTouchHelper: ItemTouchHelper
 
     private var _binding: FragmentNotesBinding? = null
     private val binding: FragmentNotesBinding
@@ -47,6 +57,12 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showFabs()
         setupRecyclerView()
+        setupItemTouchHelper()
+    }
+
+    private fun setupItemTouchHelper() {
+        itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(notesAdapter))
+        itemTouchHelper.attachToRecyclerView(binding.recyclerNotesView)
     }
 
     private fun setupRecyclerView() {

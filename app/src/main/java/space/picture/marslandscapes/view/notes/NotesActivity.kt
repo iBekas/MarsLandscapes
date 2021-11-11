@@ -2,6 +2,7 @@ package space.picture.marslandscapes.view.notes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.ActivityNotesBinding
 

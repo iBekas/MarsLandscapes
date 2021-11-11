@@ -2,6 +2,7 @@ package space.picture.marslandscapes.view.notes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import space.picture.marslandscapes.R
 import space.picture.marslandscapes.databinding.ItemCakeBinding
@@ -11,11 +12,13 @@ import java.util.*
 
 
 class NotesAdapter(
+    private var dragListener: OnStartDragListener,
     private var data: MutableList<ItemNotes>,
     private var count: Int,
     private val myLocale: Locale
-) : RecyclerView.Adapter<BaseHolder>() {
+) : RecyclerView.Adapter<BaseHolder>(), ItemTouchHelperAdapter {
 
+//    dragListener - для перемещений при нажатии кнопки, реализация позже
     private var idNote: Long = 0
     private var idCake: Long = 0
 
@@ -60,7 +63,6 @@ class NotesAdapter(
             is ItemNote -> TYPE_NOTE
             is ItemCake -> TYPE_CAKE
         }
-
     }
 
     private fun generateItemNote(): ItemNote {
@@ -84,6 +86,18 @@ class NotesAdapter(
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        data.removeAt(fromPosition).apply {
+            data.add(if (toPosition > fromPosition) toPosition - 1 else toPosition, this)
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        data.removeAt(position)
+        notifyItemRemoved(position)
     }
 }
 

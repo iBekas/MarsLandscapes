@@ -1,5 +1,6 @@
 package space.picture.marslandscapes.view.notes
 
+import android.graphics.Color
 import android.view.View
 import space.picture.marslandscapes.databinding.ItemNoteBinding
 

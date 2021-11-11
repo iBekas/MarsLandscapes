@@ -15,10 +15,6 @@ class ItemTouchHelperCallback(private val adapter: NotesAdapter) :
         return true
     }
 
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        TODO("not implemented")
-    }
-
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -33,36 +29,14 @@ class ItemTouchHelperCallback(private val adapter: NotesAdapter) :
 
     override fun onMove(
         recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder,
+        source: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        TODO("not implemented")
+        adapter.onItemMove(source.adapterPosition, target.adapterPosition)
+        return true
     }
 
-//    override fun onMove(
-//        recyclerView: RecyclerView,
-//        source: RecyclerView.ViewHolder,
-//        target: RecyclerView.ViewHolder
-//    ): Boolean {
-//        adapter.onItemMove(source.adapterPosition, target.adapterPosition)
-//        return true
-//    }
-//
-//    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
-//        adapter.onItemDismiss(viewHolder.adapterPosition)
-//    }
-//
-//    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-//        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-//            val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
-//            itemViewHolder.onItemSelected()
-//        }
-//        super.onSelectedChanged(viewHolder, actionState)
-//    }
-//
-//    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-//        super.clearView(recyclerView, viewHolder)
-//        val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
-//        itemViewHolder.onItemClear()
-//    }
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
+        adapter.onItemDismiss(viewHolder.adapterPosition)
+    }
 }
