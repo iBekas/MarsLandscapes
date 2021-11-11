@@ -5,5 +5,5 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 abstract class BaseHolder(view: View): RecyclerView.ViewHolder(view) {
-    abstract fun bind(pair: Pair<ItemNotes,Boolean>)
+    abstract fun bind(item: ItemNotes)
 }

@@ -20,7 +20,7 @@ class NotesFragment : Fragment() {
     private var isExpanded = false
     private var count: Int = 0
     private val myLocale: Locale = Locale("ru", "RU")
-    private var data: MutableList<Pair<ItemNotes,Boolean>> = arrayListOf()
+    private var data: MutableList<ItemNotes> = arrayListOf()
 
     private val notesAdapter = NotesAdapter(data, count, myLocale)
 

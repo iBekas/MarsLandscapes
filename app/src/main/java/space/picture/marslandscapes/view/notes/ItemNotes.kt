@@ -1,11 +1,9 @@
 package space.picture.marslandscapes.view.notes
 
-import java.util.*
 
+sealed class ItemNotes(open val id: Long)
 
-sealed class ItemNotes
-
-data class ItemNote(val name: String, val time: String): ItemNotes()
-data class ItemCake(val name: String, val date: String): ItemNotes()
+data class ItemNote(override val id: Long, val name: String, val time: String, var isExpanded: Boolean): ItemNotes(id)
+data class ItemCake(override val id: Long, val name: String, val date: String): ItemNotes(id)
 
 

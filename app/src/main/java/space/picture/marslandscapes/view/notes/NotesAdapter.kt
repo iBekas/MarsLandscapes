@@ -10,8 +10,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, private var count: Int, private val myLocale: Locale) : RecyclerView.Adapter<BaseHolder>() {
+class NotesAdapter(
+    private var data: MutableList<ItemNotes>,
+    private var count: Int,
+    private val myLocale: Locale
+) : RecyclerView.Adapter<BaseHolder>() {
 
+    private var idNote: Long = 0
+    private var idCake: Long = 0
 
     companion object {
         private const val TYPE_NOTE = 0
@@ -19,12 +25,12 @@ class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, priva
     }
 
     fun appendItemNote() {
-        data.add(Pair(generateItemNote(), false))
+        data.add(generateItemNote())
         notifyItemInserted(itemCount - 1)
     }
 
     fun appendItemCake() {
-        data.add(Pair(generateItemCake(), false))
+        data.add(generateItemCake())
         notifyItemInserted(itemCount - 1)
     }
 
@@ -32,7 +38,7 @@ class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, priva
         return when (viewType) {
             TYPE_NOTE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-                NoteHolder(ItemNoteBinding.bind(view), data)
+                NoteHolder(ItemNoteBinding.bind(view), data, notifyItemChange)
             }
             TYPE_CAKE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cake, parent, false)
@@ -40,7 +46,7 @@ class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, priva
             }
             else -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-                NoteHolder(ItemNoteBinding.bind(view), data)
+                NoteHolder(ItemNoteBinding.bind(view), data, notifyItemChange)
             }
         }
     }
@@ -50,20 +56,30 @@ class NotesAdapter(private var data: MutableList<Pair<ItemNotes,Boolean>>, priva
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(data[position].first){
+        return when (data[position]) {
             is ItemNote -> TYPE_NOTE
             is ItemCake -> TYPE_CAKE
         }
 
     }
 
-    private fun generateItemNote(): ItemNote{
+    private fun generateItemNote(): ItemNote {
         count++
-        return ItemNote(String.format("Заметка №%d", count), SimpleDateFormat("dd.MM.yyyy HH:mm", myLocale).format(Date()))
+        idNote++
+        return ItemNote(
+            id = idNote,
+            name = String.format("Заметка №%d", count),
+            time = SimpleDateFormat("dd.MM.yyyy HH:mm", myLocale).format(Date()), isExpanded = false
+        )
     }
 
-    private fun generateItemCake(): ItemCake{
-        return ItemCake("Вася", "01.01.2021")
+    private fun generateItemCake(): ItemCake {
+        idCake++
+        return ItemCake(id = idCake, name = "Вася", date = "01.01.2021")
+    }
+
+    private val notifyItemChange = fun(layoutPosition: Int) {
+        notifyItemChanged(layoutPosition)
     }
 
     override fun getItemCount(): Int {
