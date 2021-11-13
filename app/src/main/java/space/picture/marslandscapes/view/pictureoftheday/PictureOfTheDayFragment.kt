@@ -4,6 +4,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Typeface
+import android.graphics.Typeface.*
 import android.net.Uri
 import android.os.Bundle
 import android.transition.ChangeBounds
@@ -65,6 +67,7 @@ class PictureOfTheDayFragment : Fragment() {
         searchWikipedia()
         setMenuOnBottomBar()
         setDescription()
+        setFont()
         viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getPictureTodayFromRemoteSource(BuildConfig.NASA_API_KEY)
         onClickPictureChips()
@@ -133,6 +136,9 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
+    private fun setFont() {
+        binding.descriptionHeader.typeface = createFromAsset(requireActivity().assets, "TheBomb.ttf")
+    }
 
     private fun searchWikipedia() {
         binding.inputLayout.setEndIconOnClickListener {
