@@ -1,17 +1,19 @@
 package space.picture.marslandscapes.view.pictureoftheday
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface.*
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.transition.ChangeBounds
-import android.transition.TransitionManager
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.TypefaceSpan
 import android.view.*
-import android.view.animation.AnticipateOvershootInterpolator
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
@@ -91,9 +93,9 @@ class PictureOfTheDayFragment : Fragment() {
                         R.anim.exit_fragment_out
                     )
                     .add(
-                    R.id.container,
-                    SettingsFragment.newInstance()
-                ).addToBackStack(null).commit()
+                        R.id.container,
+                        SettingsFragment.newInstance()
+                    ).addToBackStack(null).commit()
             }
             R.id.app_bar_rover -> startActivity(Intent(context, MarsRoverPhotoActivity::class.java))
             android.R.id.home -> {
@@ -121,18 +123,34 @@ class PictureOfTheDayFragment : Fragment() {
                     binding.imageView.load(url) {
                         lifecycle(this@PictureOfTheDayFragment)
                         error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
+                        placeholder(R.drawable.bg_earth)
                     }
-                    binding.descriptionHeader.text =
-                        appState.dataNasa.title
-                    binding.bottomSheetDescription.text =
-                        appState.dataNasa.explanation
+
+                    appState.dataNasa.title.let {
+                        val spannableStart = SpannableStringBuilder(it)
+                        binding.descriptionHeader.setText(spannableStart, TextView.BufferType.EDITABLE)
+                        val spannable = binding.descriptionHeader.text as SpannableStringBuilder
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            spannable.setSpan(TypefaceSpan(createFromAsset(requireActivity().assets, "TheBomb.ttf")),0,
+                                spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        }
+                    }
+
+                    appState.dataNasa.explanation.let {
+                        val spannableStart = SpannableStringBuilder(it)
+                        binding.bottomSheetDescription.setText(spannableStart, TextView.BufferType.EDITABLE)
+                        val spannable = binding.bottomSheetDescription.text as SpannableStringBuilder
+                        val start = 0
+                        val end  = 1
+                        spannable.setSpan(ForegroundColorSpan(Color.RED),start,
+                            end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        spannable.insert(start,"• ")
+                    }
                 }
             }
             is AppState.Loading -> binding.pictureLoading.visibility = View.VISIBLE
         }
     }
-
 
     private fun searchWikipedia() {
         binding.inputLayout.setEndIconOnClickListener {
@@ -168,7 +186,7 @@ class PictureOfTheDayFragment : Fragment() {
                     }
                 }
             }
-         }
+        }
     }
 
     private fun setDescription() {

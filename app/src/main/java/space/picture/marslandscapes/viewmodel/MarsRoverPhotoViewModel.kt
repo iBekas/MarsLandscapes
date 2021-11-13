@@ -38,4 +38,5 @@ class MarsRoverPhotoViewModel(
             liveDataForViewToObserve.postValue(AppState.Error(NullPointerException())) //TODO что-то адекватное
         }
     }
+
 }
