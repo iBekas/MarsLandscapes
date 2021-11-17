@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.TypefaceSpan
@@ -127,28 +126,36 @@ class PictureOfTheDayFragment : Fragment() {
                     }
 
                     appState.dataNasa.title.let {
-                        val spannableStart = SpannableStringBuilder(it)
-                        binding.descriptionHeader.setText(spannableStart, TextView.BufferType.EDITABLE)
-                        val spannable = binding.descriptionHeader.text as SpannableStringBuilder
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                            spannable.setSpan(TypefaceSpan(createFromAsset(requireActivity().assets, "TheBomb.ttf")),0,
-                                spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                        }
+                        setNasaTitle(it)
                     }
 
                     appState.dataNasa.explanation.let {
-                        val spannableStart = SpannableStringBuilder(it)
-                        binding.bottomSheetDescription.setText(spannableStart, TextView.BufferType.EDITABLE)
-                        val spannable = binding.bottomSheetDescription.text as SpannableStringBuilder
-                        val start = 0
-                        val end  = 1
-                        spannable.setSpan(ForegroundColorSpan(Color.RED),start,
-                            end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                        spannable.insert(start,"• ")
+                        setNasaDescription(it)
                     }
                 }
             }
-            is AppState.Loading -> binding.pictureLoading.visibility = View.VISIBLE
+            is AppState.Loading -> toast("Врум-врум")
+        }
+    }
+
+    private fun setNasaDescription(description: String) {
+        val spannableStart = SpannableStringBuilder(description)
+        binding.bottomSheetDescription.setText(spannableStart, TextView.BufferType.EDITABLE)
+        val spannable = binding.bottomSheetDescription.text as SpannableStringBuilder
+        val start = 0
+        val end  = 1
+        spannable.setSpan(ForegroundColorSpan(Color.RED),start,
+            end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.insert(start,"• ")
+    }
+
+    private fun setNasaTitle(title: String) {
+        val spannableStart = SpannableStringBuilder(title)
+        binding.descriptionHeader.setText(spannableStart, TextView.BufferType.EDITABLE)
+        val spannable = binding.descriptionHeader.text as SpannableStringBuilder
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            spannable.setSpan(TypefaceSpan(createFromAsset(requireActivity().assets, "TheBomb.ttf")),0,
+                spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         }
     }
 
