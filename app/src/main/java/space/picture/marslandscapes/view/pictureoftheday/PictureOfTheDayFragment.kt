@@ -221,6 +221,7 @@ class PictureOfTheDayFragment : Fragment() {
         ObjectAnimator.ofFloat(binding.cardDescriptionHeader, "translationX", -1200f).start()
         binding.descriptionContainer.animate().duration = 300
     }
+
 }
 
 
